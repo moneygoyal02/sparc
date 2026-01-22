@@ -40,21 +40,21 @@ function Organizers() {
             name: "Prof. Binod Kumar Kanaujia",
             role: "Patron",
             designation: "Director",
-            institution: "NIT Jalandhar",
+            institution: "NIT Jalandhar, Punjab",
             image: "/assets/images/patron_1.jpg"
         },
         {
             name: "Prof. Ajay Bansal",
             role: "Co-Patron",
             designation: "Registrar",
-            institution: "NIT Jalandhar",
+            institution: "NIT Jalandhar, Punjab",
             image: "/assets/images/patron_2.jpg"
         },
         {
             name: "Prof. Rohit Mehra",
             role: "Co-Patron",
             designation: "Dean Research and Consultancy",
-            institution: "NIT Jalandhar",
+            institution: "NIT Jalandhar, Punjab",
             image: "/assets/images/patron_3.jpg"
         }
     ];
