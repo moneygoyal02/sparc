@@ -57,7 +57,7 @@ function ParticleField(props) {
                     size={0.03}
                     sizeAttenuation={true}
                     depthWrite={false}
-                    opacity={0.3} // Slightly reduced opacity for subtle blending
+                    opacity={0.3}
                 />
             </Points>
         </group>
@@ -84,13 +84,13 @@ export default function Program3D() {
     const [activeDay, setActiveDay] = useState(1)
 
     return (
-        <section className="section" id="program" style={{ position: 'relative', height: '800px', overflow: 'hidden' }}>
+        <section className="section" id="program" style={{ position: 'relative', height: '800px', overflow: 'hidden', padding: '0 0 4rem 0' }}>
             {/* 3D Background - Seamless Blend */}
             <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
                 {/* 
                     Gradient Strategy:
                     Start: #f8fafc (Matches Speakers Section Bottom)
-                    End: #eff6ff (Very subtle blue tint for depth, not "Sky Blue") 
+                    End: #eff6ff (Very subtle blue tint for depth) 
                 */}
                 <div style={{ position: 'absolute', width: '100%', height: '100%', background: 'linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%)' }} />
                 <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
@@ -101,9 +101,9 @@ export default function Program3D() {
                 </Canvas>
             </div>
 
-            {/* Glassmorphism Overlay - Reduced Padding Top */}
-            <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', flexDirection: 'column', padding: '1rem 2rem 4rem 2rem' }}>
-                <h2 className="section-title text-center" style={{ color: '#1e3a8a', marginBottom: '2rem', marginTop: '1rem' }}>Programme Schedule</h2>
+            {/* Glassmorphism Overlay - Zero Top Padding */}
+            <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', flexDirection: 'column', padding: '0 2rem 2rem 2rem' }}>
+                <h2 className="section-title text-center" style={{ color: '#1e3a8a', marginBottom: '1.5rem', marginTop: '1rem' }}>Programme Schedule</h2>
 
                 <div className="glass-dashboard">
                     {/* Tabs */}
