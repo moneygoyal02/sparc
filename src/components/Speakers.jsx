@@ -6,40 +6,64 @@ function Speakers() {
 
     const speakers = [
         {
-            name: "Prof. Christos N. Markides",
-            designation: "Professor of Clean Energy Technologies",
-            affiliation: "Imperial College London, UK",
-            image: "/assets/images/speaker_1.png"
-        },
-        {
             name: "Prof. Umberto Desideri",
             designation: "Professor",
             affiliation: "University of Pisa, Italy",
             image: "/assets/images/speaker_2.png"
         },
         {
-            name: "Dr. Jagabandhu Kole",
-            designation: "Sr Vice President R & D",
-            affiliation: "JSW Cement Ltd., Mumbai",
-            image: "/assets/images/speaker_3.jpg"
+            name: "Prof. Christos N. Markides",
+            designation: "Professor",
+            affiliation: "Imperial College London, UK",
+            image: "/assets/images/speaker_1.png"
         },
         {
-            name: "Prof. Anil Kumar Emadabathuni",
-            designation: "Professor",
-            affiliation: "IIT Tirupati",
+            name: "Dr. Manish Kaushal",
+            designation: "Asst. Professor",
+            affiliation: "Indian Institute of Technology Kharagpur, West Bengal",
+            image: "/assets/images/speaker_3.webp"
+        },
+        {
+            name: "Mr Vinay Devasthali",
+            designation: "Director",
+            affiliation: "Saveeco Energy India Pvt. Ltd., Pune, Maharashtra",
             image: "/assets/images/speaker_4.jpg"
         },
         {
-            name: "Prof. Jahar Sarkar",
-            designation: "Professor",
-            affiliation: "IIT (BHU), Varanasi",
+            name: "Prof. R Saravanan",
+            designation: "Professor, Dept. of Mechanical Engineering",
+            affiliation: "Anna University, Chennai, Tamil Nadu",
             image: "/assets/images/speaker_5.jpg"
+        },
+        {
+            name: "Prof. Sudipta De",
+            designation: "Professor, Dept. of Mechanical Engineering",
+            affiliation: "Jadavpur University, Kolkata, West Bengal",
+            image: "/assets/images/speaker_7.jpg"
+        },
+        {
+            name: "Prof. N Shankar Ganesh",
+            designation: "Professor and Director, R&D",
+            affiliation: "Global Institute of Engineering and Technology, Ranipet, Tamil Nadu",
+            image: "/assets/images/speaker_8.jpg"
+        },
+        {
+            name: "Mr Abhijeet Chaudhari",
+            designation: "Director",
+            affiliation: "Enrecover Pvt. Limited, Pune, Maharashtra",
+            image: "/assets/images/speaker_9.jpg"
         },
         {
             name: "Prof. Tangellapalli Srinivas",
             designation: "Professor",
-            affiliation: "NIT Jalandhar, Punjab",
+            affiliation: "NIT Jalandhar",
             image: "/assets/images/speaker_6.jpg"
+        },
+        {
+            name: "Dr Rajan Kumar",
+            designation: "Asst. Professor",
+            affiliation: "NIT Jalandhar",
+            image: "/assets/images/organizer_2.png"
         }
     ]
 
@@ -49,7 +73,7 @@ function Speakers() {
                 <h2 className="section-title" ref={titleParallax.ref} style={titleParallax.style}>Distinguished Workshop Speakers</h2>
                 <div className="speakers-grid">
                     {speakers.map((speaker, index) => (
-                        <ScrollReveal key={index} delay={index * 0.1}>
+                        <ScrollReveal key={index} delay={index * 0.1} style={{ height: '100%' }}>
                             <div className="profile-card">
                                 <img
                                     src={speaker.image}

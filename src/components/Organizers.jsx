@@ -93,6 +93,15 @@ function Organizers() {
         }
     ];
 
+    const committeeMembers = [
+        "Prof. Joseph Anand Vaz", "Prof. Subhash Chander", "Prof. Raman Bedi", "Prof. Pramod Kumar",
+        "Prof. Dinesh Kumar Shukla", "Er. Ajay Trehan", "Dr. R. S. Bharj", "Dr. Rajeev Kukreja",
+        "Dr. S. K. Tiwari", "Dr. Sarbjot Singh Sandhu", "Dr. Dushyant Singh", "Dr. Ashok Kumar Bagha",
+        "Dr. Dwesh K. Singh", "Dr. Manoj Kumar", "Dr. Nitin Sharma", "Dr. Ranchan Chauhan",
+        "Dr. Sanjay", "Dr. Satyender Singh", "Dr. Saurabh Kango", "Dr. Sumit Sharma",
+        "Dr. Harpreet Singh", "Dr. Parnika Shrivastava", "Dr. Ravi Kant Ravi"
+    ];
+
     return (
         <section className="section organizers-section" id="organizers">
             <div className="container">
@@ -119,6 +128,25 @@ function Organizers() {
                         ))}
                     </div>
                 </div>
+
+                {/* Organizing Committee */}
+                <div className="committee-container">
+                    <h3 className="committee-title">Organizing Committee</h3>
+                    <div className="committee-grid">
+                        {committeeMembers.map((member, index) => (
+                            <div key={index} className="committee-card">
+                                <div className="committee-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                    </svg>
+                                </div>
+                                <span className="committee-name">{member}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
         </section>
     )

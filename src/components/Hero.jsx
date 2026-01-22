@@ -65,7 +65,7 @@ function Hero() {
                     <div className="detail-box">
                         <div className="detail-content">
                             <span className="detail-label">PARTICIPANTS</span>
-                            <span className="detail-value">Maximum 60 (In-person)</span>
+                            <span className="detail-value">Limited Seats</span>
                         </div>
                     </div>
                     <div className="detail-box">

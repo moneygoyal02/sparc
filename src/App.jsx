@@ -4,6 +4,7 @@ import About from './components/About'
 import Collaboration from './components/Collaboration'
 import Organizers from './components/Organizers'
 import Speakers from './components/Speakers'
+import Program3D from './components/Program3D'
 import Details from './components/Details'
 import Registration from './components/Registration'
 import Footer from './components/Footer'
@@ -19,6 +20,7 @@ function App() {
             <About />
             <Organizers />
             <Speakers />
+            <Program3D />
             <Details />
             <Registration />
             <Footer />
