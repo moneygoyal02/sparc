@@ -1,6 +1,11 @@
+import ThreeBackground from './ThreeBackground'
+
 function Hero() {
     return (
         <section className="hero" id="home">
+            {/* Three.js 3D Background */}
+            <ThreeBackground />
+
             <div className="container">
                 {/* Three Logos Row */}
                 <div className="hero-logos-row">
@@ -69,7 +74,7 @@ function Hero() {
                             <span className="detail-value">Free Entry</span>
                         </div>
                     </div>
-                </div>               
+                </div>
             </div>
         </section>
     )

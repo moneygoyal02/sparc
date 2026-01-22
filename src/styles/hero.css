@@ -3,6 +3,13 @@
     background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     padding: 8rem 2rem 5rem;
     position: relative;
+    overflow: hidden;
+}
+
+/* Ensure content is above 3D background */
+.hero .container {
+    position: relative;
+    z-index: 1;
 }
 
 /* Three Logos Row */
