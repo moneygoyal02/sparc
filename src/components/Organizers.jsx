@@ -53,7 +53,7 @@ function Organizers() {
         {
             name: "Prof. Rohit Mehra",
             role: "Co-Patron",
-            designation: "Dean Research and Consultancy",
+            designation: "Dean (Research and Consultancy)",
             institution: "NIT Jalandhar, Punjab",
             image: "/assets/images/patron_3.jpg"
         }

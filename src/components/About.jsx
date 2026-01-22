@@ -33,16 +33,7 @@ function About() {
                             exergy analysis, optimization frameworks, and system integration for combined power, heating, and cooling.
                         </p>
 
-                        <div className="org-compact">
-                            <div className="org-item">
-                                <div className="org-icon">🏛️</div>
-                                <div className="org-details">
-                                    <strong>Organized by</strong>
-                                    <span>Department of Mechanical Engineering, NIT Jalandhar</span>
-                                </div>
-                            </div>
 
-                        </div>
                     </div>
                 </div>
             </div>
