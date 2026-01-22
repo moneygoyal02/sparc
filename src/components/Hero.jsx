@@ -1,4 +1,3 @@
-import ThreeBackground from './ThreeBackground'
 import { useParallax } from '../hooks/useParallax'
 
 function Hero() {
@@ -6,8 +5,6 @@ function Hero() {
 
     return (
         <section className="hero" id="home">
-            {/* Three.js 3D Background */}
-            <ThreeBackground />
 
             <div className="container">
                 {/* Three Logos Row */}
@@ -44,7 +41,7 @@ function Hero() {
 
                 {/* Workshop Title */}
                 <div className="hero-title-section" ref={titleParallax.ref} style={titleParallax.style}>
-                    <div className="hero-tag">2-Day International Workshop</div>
+                    <div className="hero-tag">SPARC Sponsored 2-Day Workshop</div>
                     <h1 className="hero-main-title">
                         Waste Heat Recovery-Based Thermal Polygeneration
                         Energy Systems

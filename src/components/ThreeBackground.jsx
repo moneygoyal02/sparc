@@ -14,7 +14,7 @@ function EnergyFlow() {
                 x: (Math.random() - 0.5) * 30,
                 y: Math.random() * 15 - 7.5,
                 z: (Math.random() - 0.5) * 10,
-                speed: 0.01 + Math.random() * 0.02,
+                speed: 0.005 + Math.random() * 0.01,
                 size: 0.05 + Math.random() * 0.08,
                 opacity: 0.5 + Math.random() * 0.4,
                 phase: Math.random() * Math.PI * 2
@@ -226,12 +226,12 @@ function Scene() {
 export default function ThreeBackground() {
     return (
         <div style={{
-            position: 'absolute',
+            position: 'fixed',
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: -1,
             pointerEvents: 'none'
         }}>
             <Canvas

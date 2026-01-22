@@ -13,7 +13,14 @@ function Footer() {
                         </a>
                     </div>
                     <div className="footer-col">
-                        <h4>Contact Person</h4>
+                        <h4>Principal Investigator</h4>
+                        <p><strong>Dr. Tangellapalli Srinivas</strong></p>
+                        <p>Professor</p>
+                        <p>Email: <a href="mailto:srinivast@nitj.ac.in">srinivast@nitj.ac.in</a></p>
+                        <p>Phone: +91-8056300923</p>
+                    </div>
+                    <div className="footer-col">
+                        <h4>Co-Principal Investigator</h4>
                         <p><strong>Dr. Rajan Kumar</strong></p>
                         <p>Assistant Professor</p>
                         <p>Email: <a href="mailto:kumarrajan@nitj.ac.in">kumarrajan@nitj.ac.in</a></p>
@@ -21,9 +28,11 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    
+
                     <p className="developer-credit">
                         Developed by <a href="https://www.linkedin.com/in/money-goyal" target="_blank" rel="noopener noreferrer">Money Goyal</a>
+                        <br />
+                        B.Tech 3rd Year, Mechanical Engineering, NIT Jalandhar
                     </p>
                 </div>
             </div>

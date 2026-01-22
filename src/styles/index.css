@@ -26,6 +26,12 @@
     /* Spacing */
     --max-width: 1200px;
     --section-padding: 4rem 2rem;
+
+    /* Background Patterns */
+    --bg-graph-paper:
+        linear-gradient(90deg, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
+        linear-gradient(rgba(226, 232, 240, 0.6) 1px, transparent 1px);
+    --bg-dots: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
 }
 
 * {
@@ -42,7 +48,7 @@ html {
 
 body {
     font-family: var(--font-main);
-    background-color: var(--bg-white);
+    background-color: transparent;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -261,9 +267,11 @@ img {
 
 /* Hero Section */
 .hero {
-    background: var(--bg-white);
+    background: transparent;
     padding: 8rem 2rem 5rem;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 /* Hero Logos */
@@ -431,7 +439,8 @@ img {
 /* Organizers / Speakers Section */
 .organizers-section,
 .speakers-section {
-    background-color: var(--bg-section);
+    background-color: rgba(248, 250, 252, 0.85);
+    backdrop-filter: blur(8px);
 }
 
 .organizers-grid {
@@ -488,42 +497,110 @@ img {
 
 /* Details Section */
 .details-section {
-    background-color: var(--bg-white);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
 }
 
-.details-grid {
+/* Details Grid Layout */
+.details-intro-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.details-section {
+    background-color: #f8fafc !important;
+    /* Force light grey for contrast */
+    position: relative;
+    z-index: 1;
 }
 
 .detail-card {
-    background-color: var(--bg-white);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s ease;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .detail-card:hover {
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.card-header-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.card-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--primary-blue);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 6px;
+    box-sizing: content-box;
+    border-radius: 8px;
 }
 
 .detail-card h3 {
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    color: var(--primary-blue-dark);
+    margin-bottom: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
 }
 
-.detail-card ul {
-    padding-left: 1.5rem;
+.topics-grid-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 3rem;
+    padding: 0;
 }
 
-.detail-card ul li {
-    list-style-type: disc;
-    margin-bottom: 0.5rem;
+.topics-grid-list li {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
     color: var(--text-secondary);
+    line-height: 1.6;
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.topics-grid-list li:hover {
+    border-color: var(--primary-blue-light);
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.topic-check-icon {
+    width: 20px;
+    height: 20px;
+    color: #10b981;
+    /* Emerald Green */
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Helper Class for Mobile Response */
+@media (max-width: 768px) {
+    .details-intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topics-grid-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Registration Section */
@@ -573,28 +650,35 @@ img {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 4rem;
+    text-align: center;
 }
 
 .footer h4 {
     margin-bottom: 1rem;
     font-size: 1.1rem;
+    color: var(--accent-orange);
 }
 
 .footer p {
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+    opacity: 0.9;
 }
 
 .footer a {
-    color: var(--primary-blue-light);
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
 }
 
 .footer a:hover {
-    text-decoration: underline;
+    color: var(--accent-orange);
+    border-bottom-color: var(--accent-orange);
 }
 
 .footer-bottom {

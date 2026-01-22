@@ -1,17 +1,21 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
+import Collaboration from './components/Collaboration'
 import Organizers from './components/Organizers'
 import Speakers from './components/Speakers'
 import Details from './components/Details'
 import Registration from './components/Registration'
 import Footer from './components/Footer'
+import ThreeBackground from './components/ThreeBackground'
 
 function App() {
     return (
         <div className="App">
+            <ThreeBackground />
             <Header />
             <Hero />
+            <Collaboration />
             <About />
             <Organizers />
             <Speakers />

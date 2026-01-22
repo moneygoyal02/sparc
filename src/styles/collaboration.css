@@ -1,0 +1,108 @@
+/* Collaboration Section - Professional Design */
+.collaboration-section {
+    background-color: transparent;
+    padding: 3rem 0 4rem;
+    /* Adjusted padding */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Optional: Add a subtle separator or background decoration if needed */
+.collaboration-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+}
+
+.collaboration-title {
+    font-family: var(--font-heading);
+    /* Use global heading font */
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+}
+
+.collaboration-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--accent-orange);
+    margin: 0.5rem auto 0;
+    opacity: 0.7;
+}
+
+.collaboration-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    /* Spacing between logos */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.collab-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 12px;
+    background: transparent;
+}
+
+.collab-logo-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-sm);
+    /* Subtle shadow on hover */
+}
+
+.collab-logo {
+    height: 160px;
+    /* Standardized height */
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    /* Optional: Grayscale until hover? 
+       filter: grayscale(100%);
+       opacity: 0.8; 
+    */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.collab-logo-item:hover .collab-logo {
+    /* filter: grayscale(0%);
+       opacity: 1; 
+    */
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .collaboration-logos {
+        gap: 2rem;
+    }
+
+    .collab-logo {
+        height: 100px;
+    }
+
+    .collaboration-title {
+        font-size: 1.25rem;
+    }
+}

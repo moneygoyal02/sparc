@@ -41,13 +41,7 @@ function About() {
                                     <span>Department of Mechanical Engineering, NIT Jalandhar</span>
                                 </div>
                             </div>
-                            <div className="org-item">
-                                <div className="org-icon">🤝</div>
-                                <div className="org-details">
-                                    <strong>In Collaboration with</strong>
-                                    <span>Imperial College London & University of Pisa</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
