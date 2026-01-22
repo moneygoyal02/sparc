@@ -1,0 +1,184 @@
+/* Hero Section - Professional Three Logo Design */
+.hero {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    padding: 8rem 2rem 5rem;
+    position: relative;
+}
+
+/* Three Logos Row */
+.hero-logos-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hero-logo {
+    height: 110px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.hero-logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Divider */
+.hero-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+    margin: 0 auto 3rem;
+}
+
+/* Title Section */
+.hero-title-section {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.hero-main-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    line-height: 1.25;
+    color: var(--text-primary);
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+/* Event Details Grid */
+.hero-details-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 3rem auto 0;
+}
+
+.detail-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.detail-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-blue-light);
+}
+
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.detail-value {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .hero-logos-row {
+        gap: 2.5rem;
+    }
+
+    .hero-logo {
+        height: 85px;
+    }
+
+    .hero-main-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 7rem 1.5rem 4rem;
+    }
+
+    .hero-logos-row {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .hero-logo {
+        height: 70px;
+    }
+
+    .hero-main-title {
+        font-size: 2rem;
+    }
+
+    .hero-details-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-logos-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .hero-main-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}

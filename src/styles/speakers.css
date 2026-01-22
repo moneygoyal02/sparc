@@ -1,0 +1,207 @@
+/* Speakers Section - Professional Enhanced Design */
+.speakers-section {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    position: relative;
+}
+
+.speakers-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0 50%, transparent);
+}
+
+.speakers-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+/* Professional Enhanced Card */
+.profile-card {
+    background: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    padding: 1.75rem;
+    gap: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+    /* Force 3 per row on desktop with wider cards */
+    flex: 0 0 340px !important;
+    width: 340px !important;
+    min-width: 340px !important;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Subtle gradient accent on top */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.profile-card:hover::before {
+    opacity: 1;
+}
+
+/* Subtle background pattern */
+.profile-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.profile-card:hover::after {
+    opacity: 1;
+}
+
+.profile-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.08),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Enhanced Image Styling with Gradient Ring */
+.profile-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid #ffffff;
+    box-shadow:
+        0 0 0 2px #e2e8f0,
+        0 4px 12px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.profile-card:hover .profile-photo {
+    box-shadow:
+        0 0 0 3px #ffffff,
+        0 0 0 5px rgba(59, 130, 246, 0.3),
+        0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+/* Text Styling with Better Hierarchy */
+.speaker-info {
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+    /* Prevent text overflow */
+}
+
+.profile-card h3 {
+    font-size: 1.125rem;
+    color: #1e293b;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    letter-spacing: -0.01em;
+}
+
+.profile-card:hover h3 {
+    color: #3b82f6;
+}
+
+.profile-card .designation {
+    font-size: 0.9rem;
+    color: #475569;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    line-height: 1.5;
+}
+
+.profile-card .affiliation {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Enhanced Fallback circle style */
+.profile-photo-fallback {
+    box-shadow:
+        0 0 0 2px #e2e8f0,
+        0 4px 12px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+
+    /* 2 columns on medium screens */
+    .profile-card {
+        width: calc(50% - 1.25rem);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* 1 column on mobile */
+    .profile-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .speakers-grid {
+        gap: 1.5rem;
+    }
+
+    .speakers-section {
+        padding: 3rem 0;
+    }
+
+    .profile-photo {
+        width: 85px;
+        height: 85px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .profile-card h3 {
+        font-size: 1.05rem;
+    }
+
+    .profile-photo {
+        width: 75px;
+        height: 75px;
+    }
+}

@@ -1,0 +1,55 @@
+function About() {
+    return (
+        <section className="section about-section" id="about">
+            <div className="container">
+                <div className="about-grid">
+                    {/* Left Image */}
+                    <div className="about-image-container">
+                        <div className="image-wrapper">
+                            <img
+                                src="/assets/images/building.jpg"
+                                alt="NIT Jalandhar Campus"
+                                className="about-img"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Right Content */}
+                    <div className="about-content">
+                        <h3 className="section-title-left">ABOUT THE PROGRAM</h3>
+                        <p className="about-description">
+                            The workshop focuses on advanced waste heat recovery technologies
+                            and thermal polygeneration systems for sustainable energy utilization.
+                            The program aims to bridge theoretical concepts with practical
+                            applications through expert lectures, skill development, and technical
+                            discussions.
+                        </p>
+                        <p className="about-description">
+                            Participants will gain fundamental and advanced knowledge of waste heat recovery,
+                            exergy analysis, optimization frameworks, and system integration for combined power, heating, and cooling.
+                        </p>
+
+                        <div className="org-compact">
+                            <div className="org-item">
+                                <div className="org-icon">🏛️</div>
+                                <div className="org-details">
+                                    <strong>Organized by</strong>
+                                    <span>Department of Mechanical Engineering, NIT Jalandhar</span>
+                                </div>
+                            </div>
+                            <div className="org-item">
+                                <div className="org-icon">🤝</div>
+                                <div className="org-details">
+                                    <strong>In Collaboration with</strong>
+                                    <span>Imperial College London & University of Pisa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default About
