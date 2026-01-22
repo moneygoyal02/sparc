@@ -97,27 +97,35 @@
         0 2px 4px -1px rgba(0, 0, 0, 0.03);
     width: 350px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #e2e8f0;
+    /* border: 1px solid #e2e8f0; Removed for living border */
     position: relative;
     overflow: visible;
     /* Allow 3D pop-out */
     /* 3D Capabilities */
     transform-style: preserve-3d;
     transform: perspective(1000px);
+
+    /* Living Border Base */
+    background-clip: padding-box;
+    border: 2px solid transparent;
 }
 
-/* Gradient accent on top */
+/* Living Energy Border Animation */
 .organizer-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-    opacity: 1;
-    border-radius: 20px 20px 0 0;
-    transform: translateZ(1px);
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+    background-size: 300% 300%;
+    z-index: -1;
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: border-flow 4s ease infinite;
+    transform: translateZ(-2px);
 }
 
 /* Subtle background glow */

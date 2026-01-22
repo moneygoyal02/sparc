@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -23,6 +23,20 @@ function EnergyFlow() {
         return temp
     }, [])
 
+    const mouseRef = useRef({ x: 9999, y: 9999 }) // Start off-screen
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            // Normalize mouse position to -1 to 1
+            mouseRef.current = {
+                x: (event.clientX / window.innerWidth) * 2 - 1,
+                y: -(event.clientY / window.innerHeight) * 2 + 1
+            }
+        }
+        window.addEventListener('mousemove', handleMouseMove)
+        return () => window.removeEventListener('mousemove', handleMouseMove)
+    }, [])
+
     useFrame((state) => {
         if (!particlesRef.current) return
 
@@ -30,10 +44,33 @@ function EnergyFlow() {
         const sizes = particlesRef.current.geometry.attributes.size.array
         const opacities = particlesRef.current.geometry.attributes.opacity.array
 
+        // Calculate mouse position in world space at z=0
+        const mouseVector = new THREE.Vector3(mouseRef.current.x, mouseRef.current.y, 0)
+        mouseVector.unproject(state.camera)
+        const dir = mouseVector.sub(state.camera.position).normalize()
+        const distanceToPlane = -state.camera.position.z / dir.z
+        const mouseWorldPos = state.camera.position.clone().add(dir.multiplyScalar(distanceToPlane))
+
         particles.forEach((particle, i) => {
-            // Upward flow with gentle wave motion
+            // Standard Flow
             particle.y += particle.speed
             particle.x += Math.sin(state.clock.elapsedTime * 0.5 + particle.phase) * 0.01
+
+            // Mouse Interaction (Scatter)
+            const dx = particle.x - mouseWorldPos.x
+            const dy = particle.y - mouseWorldPos.y
+            const dist = Math.sqrt(dx * dx + dy * dy)
+            const interactionRadius = 4
+
+            if (dist < interactionRadius) {
+                const force = (interactionRadius - dist) * 0.05
+                const angle = Math.atan2(dy, dx)
+                particle.x += Math.cos(angle) * force
+                particle.y += Math.sin(angle) * force
+            }
+
+            // Return to center influence (gentle gravity back to flow)
+            // This prevents them from getting stuck or pushed too far forever
 
             // Reset when particle goes too high
             if (particle.y > 8) {

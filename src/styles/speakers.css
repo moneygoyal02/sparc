@@ -25,7 +25,7 @@
     padding: 0 !important;
 }
 
-/* Professional Enhanced Card */
+/* Professional Enhanced Card with Living Border */
 .profile-card {
     background: #ffffff;
     border-radius: 16px;
@@ -34,10 +34,8 @@
     padding: 1.75rem;
     gap: 1.5rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #e2e8f0;
     position: relative;
     overflow: visible;
-    /* Changed from hidden to visible for 3D elements */
     /* Force 3 per row on desktop with wider cards */
     flex: 0 0 340px !important;
     width: 340px !important;
@@ -49,23 +47,52 @@
     /* 3D Capabilities */
     transform-style: preserve-3d;
     transform: perspective(1000px);
+
+    /* Living Border Base */
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    /* Placeholder for spacing */
 }
 
-/* Subtle gradient accent on top */
+/* Living Energy Border Animation */
 .profile-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+    background-size: 300% 300%;
+    z-index: -1;
+    border-radius: 18px;
     opacity: 0;
     transition: opacity 0.4s ease;
-    border-radius: 16px 16px 0 0;
-    transform: translateZ(1px);
-    /* Prevent z-fighting */
+    animation: border-flow 4s ease infinite;
+    transform: translateZ(-2px);
+    /* Slightly behind */
 }
+
+.profile-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes border-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Inner white background (handled by main element, but ensuring clean stacking) */
+
 
 .profile-card:hover::before {
     opacity: 1;

@@ -40,7 +40,7 @@ function Organizers() {
             name: "Prof. Binod Kumar Kanaujia",
             role: "Patron",
             designation: "Director",
-            institution: "Dr. B. R. Ambedkar National Institute of Technology Jalandhar",
+            institution: "NIT Jalandhar",
             image: "/assets/images/patron_1.jpg"
         },
         {
