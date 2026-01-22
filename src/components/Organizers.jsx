@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollReveal from './ScrollReveal';
 
 const OrganizerCard = ({ name, role, designation, department, institution, image, isLocal = false }) => {
     const [imgError, setImgError] = React.useState(false);
@@ -100,7 +101,9 @@ function Organizers() {
                     <div className="patrons-title-badge">Patrons</div>
                     <div className="patrons-grid">
                         {patrons.map((patron, index) => (
-                            <OrganizerCard key={index} {...patron} isLocal={true} />
+                            <ScrollReveal key={index} delay={index * 0.15}>
+                                <OrganizerCard {...patron} isLocal={true} />
+                            </ScrollReveal>
                         ))}
                     </div>
                 </div>
@@ -110,7 +113,9 @@ function Organizers() {
                     <div className="organizers-title-badge">Organizers</div>
                     <div className="local-organizers-grid">
                         {localOrganizers.map((org, index) => (
-                            <OrganizerCard key={index} {...org} isLocal={true} />
+                            <ScrollReveal key={index} delay={index * 0.15}>
+                                <OrganizerCard {...org} isLocal={true} />
+                            </ScrollReveal>
                         ))}
                     </div>
                 </div>
@@ -119,4 +124,4 @@ function Organizers() {
     )
 }
 
-export default Organizers
+export default Organizers;

@@ -1,10 +1,14 @@
+import { useParallax } from '../hooks/useParallax'
+
 function About() {
+    const imageParallax = useParallax(-0.05)
+
     return (
         <section className="section about-section" id="about">
             <div className="container">
                 <div className="about-grid">
                     {/* Left Image */}
-                    <div className="about-image-container">
+                    <div className="about-image-container" ref={imageParallax.ref} style={imageParallax.style}>
                         <div className="image-wrapper">
                             <img
                                 src="/assets/images/building.jpg"

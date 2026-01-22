@@ -1,4 +1,9 @@
+import { useParallax } from '../hooks/useParallax'
+import ScrollReveal from './ScrollReveal'
+
 function Speakers() {
+    const titleParallax = useParallax(-0.05)
+
     const speakers = [
         {
             name: "Prof. Christos N. Markides",
@@ -41,42 +46,44 @@ function Speakers() {
     return (
         <section className="section speakers-section" id="speakers">
             <div className="container">
-                <h2 className="section-title">Distinguished Workshop Speakers</h2>
+                <h2 className="section-title" ref={titleParallax.ref} style={titleParallax.style}>Distinguished Workshop Speakers</h2>
                 <div className="speakers-grid">
                     {speakers.map((speaker, index) => (
-                        <div key={index} className="profile-card">
-                            <img
-                                src={speaker.image}
-                                alt={speaker.name}
-                                className="profile-photo"
-                                onError={(e) => {
-                                    e.target.style.display = 'none';
-                                    e.target.nextSibling.style.display = 'flex';
-                                }}
-                            />
-                            {/* Fallback Initials Circle (Hidden by default) */}
-                            <div className="profile-photo-fallback" style={{
-                                display: 'none',
-                                width: '90px',
-                                height: '90px',
-                                background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)',
-                                borderRadius: '50%',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                color: 'white',
-                                fontSize: '1.5rem',
-                                fontWeight: 'bold',
-                                flexShrink: 0
-                            }}>
-                                {speaker.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                            </div>
+                        <ScrollReveal key={index} delay={index * 0.1}>
+                            <div className="profile-card">
+                                <img
+                                    src={speaker.image}
+                                    alt={speaker.name}
+                                    className="profile-photo"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display = 'flex';
+                                    }}
+                                />
+                                {/* Fallback Initials Circle (Hidden by default) */}
+                                <div className="profile-photo-fallback" style={{
+                                    display: 'none',
+                                    width: '90px',
+                                    height: '90px',
+                                    background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)',
+                                    borderRadius: '50%',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: 'white',
+                                    fontSize: '1.5rem',
+                                    fontWeight: 'bold',
+                                    flexShrink: 0
+                                }}>
+                                    {speaker.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                                </div>
 
-                            <div className="speaker-info">
-                                <h3>{speaker.name}</h3>
-                                <p className="designation">{speaker.designation}</p>
-                                <p className="affiliation">{speaker.affiliation}</p>
+                                <div className="speaker-info">
+                                    <h3>{speaker.name}</h3>
+                                    <p className="designation">{speaker.designation}</p>
+                                    <p className="affiliation">{speaker.affiliation}</p>
+                                </div>
                             </div>
-                        </div>
+                        </ScrollReveal>
                     ))}
                 </div>
             </div>
