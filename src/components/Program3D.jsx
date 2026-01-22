@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, Text, useCursor, Environment, Float, Stars } from '@react-three/drei'
+import { Points, PointMaterial, Float } from '@react-three/drei'
 import * as THREE from 'three'
 
 // Schedule Data
@@ -28,154 +28,55 @@ const schedule = {
     ]
 }
 
-function Card({ item, index, activeIndex, total, setActiveIndex }) {
+function ParticleField(props) {
     const ref = useRef()
-    const [hovered, setHovered] = useState(false)
-    useCursor(hovered)
-
-    // Calculate position in the carousel
-    // spacing between cards
-    const xSpacing = 3.5
-
-    // We want the active card to be at x=0
-    // So each card's x is (index - activeIndex) * xSpacing
-    const targetX = (index - activeIndex) * xSpacing
-    const isActive = index === activeIndex
-
-    // Calculate scale and z-index based on distance from center
-    const dist = Math.abs(index - activeIndex)
-    const scale = isActive ? 1.1 : Math.max(0.8 - dist * 0.1, 0.6)
-    const zIndex = isActive ? 10 : 5 - dist
-    const opacity = isActive ? 1 : Math.max(0.5 - dist * 0.15, 0.2)
-
-    useFrame((state, delta) => {
-        ref.current.position.x = THREE.MathUtils.lerp(ref.current.position.x, targetX, delta * 4)
-
-        // Add a slight float effect to active card
-        if (isActive) {
-            ref.current.position.y = THREE.MathUtils.lerp(ref.current.position.y, Math.sin(state.clock.elapsedTime) * 0.1, delta * 2)
-        } else {
-            ref.current.position.y = THREE.MathUtils.lerp(ref.current.position.y, 0, delta * 4)
+    const [sphere] = useState(() => {
+        const coords = new Float32Array(3000 * 3)
+        for (let i = 0; i < 3000; i++) {
+            const r = 10 * Math.cbrt(Math.random())
+            const theta = Math.random() * 2 * Math.PI
+            const phi = Math.acos(2 * Math.random() - 1)
+            coords[i * 3] = r * Math.sin(phi) * Math.cos(theta)
+            coords[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
+            coords[i * 3 + 2] = r * Math.cos(phi)
         }
-
-        ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (index - activeIndex) * -0.2, delta * 4)
+        return coords
     })
 
-    const cardStyle = {
-        width: '320px',
-        padding: '24px',
-        borderRadius: '16px',
-        background: item.type === 'break' ? 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)' : 'rgba(255, 255, 255, 0.95)',
-        border: item.type === 'break' ? '2px solid #fdba74' : '2px solid white',
-        boxShadow: isActive ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' : 'none',
-        opacity: opacity,
-        transform: `scale(${scale})`,
-        transition: 'all 0.3s ease',
-        cursor: 'pointer',
-        textAlign: 'left',
-        userSelect: 'none'
-    }
+    useFrame((state, delta) => {
+        ref.current.rotation.x -= delta / 15
+        ref.current.rotation.y -= delta / 20
+    })
 
     return (
-        <group ref={ref} position={[index * xSpacing, 0, 0]}>
-            <Html transform position={[0, 0, 0]} style={{ pointerEvents: 'none' }} zIndexRange={[100 - dist, 0]}>
-                <div
-                    style={cardStyle}
-                    onMouseEnter={() => setHovered(true)}
-                    onMouseLeave={() => setHovered(false)}
-                    onClick={() => setActiveIndex(index)}
-                >
-                    <div style={{
-                        fontSize: '0.9rem',
-                        fontWeight: '700',
-                        color: item.type === 'break' ? '#ea580c' : '#2563eb',
-                        marginBottom: '8px',
-                        display: 'flex',
-                        justifyContent: 'space-between'
-                    }}>
-                        <span>{item.time}</span>
-                        {item.session && <span style={{
-                            background: 'rgba(37, 99, 235, 0.1)',
-                            padding: '2px 8px',
-                            borderRadius: '12px',
-                            fontSize: '0.75rem'
-                        }}>{item.session}</span>}
-                    </div>
-
-                    <div style={{ flex: 1 }}>
-                        <h3 style={{
-                            margin: '0 0 8px 0',
-                            fontSize: '1.2rem',
-                            color: '#1e293b',
-                            lineHeight: '1.4'
-                        }}>{item.title}</h3>
-
-                        {item.speaker && (
-                            <div style={{ color: '#ea580c', fontWeight: '600', marginBottom: '4px' }}>
-                                {item.speaker}
-                            </div>
-                        )}
-
-                        {item.details && (
-                            <div style={{ fontSize: '0.85rem', color: '#64748b', fontStyle: 'italic' }}>
-                                {item.details}
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </Html>
-
-            {/* Hitbox meshes for interaction since Html has pointerEvents none/limited issues in 3D sometimes */}
-            <mesh
-                onClick={(e) => {
-                    e.stopPropagation()
-                    setActiveIndex(index)
-                }}
-                onPointerOver={() => setHovered(true)}
-                onPointerOut={() => setHovered(false)}
-                visible={false}
-            >
-                <planeGeometry args={[3.5, 5]} />
-                <meshBasicMaterial transparent opacity={0} />
-            </mesh>
+        <group rotation={[0, 0, Math.PI / 4]}>
+            <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
+                <PointMaterial
+                    transparent
+                    color="#1e40af" // primary-blue
+                    size={0.03}
+                    sizeAttenuation={true}
+                    depthWrite={false}
+                    opacity={0.4}
+                />
+            </Points>
         </group>
     )
 }
 
-function Scene({ activeDayItems }) {
-    const [activeIndex, setActiveIndex] = useState(0)
-
-    // Reset index when day changes, but can keep nicely
-    useEffect(() => {
-        setActiveIndex(0)
-    }, [activeDayItems])
-
-    // Arrow keys navigation
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'ArrowRight') {
-                setActiveIndex(prev => Math.min(prev + 1, activeDayItems.length - 1))
-            } else if (e.key === 'ArrowLeft') {
-                setActiveIndex(prev => Math.max(prev - 1, 0))
-            }
-        }
-        window.addEventListener('keydown', handleKeyDown)
-        return () => window.removeEventListener('keydown', handleKeyDown)
-    }, [activeDayItems.length])
-
+function ScheduleItem({ item }) {
     return (
-        <group position={[0, 0, 0]}>
-            {activeDayItems.map((item, index) => (
-                <Card
-                    key={index}
-                    item={item}
-                    index={index}
-                    activeIndex={activeIndex}
-                    total={activeDayItems.length}
-                    setActiveIndex={setActiveIndex}
-                />
-            ))}
-        </group>
+        <div className="schedule-item-glass">
+            <div className="time-badge">{item.time}</div>
+            <div className="content-area">
+                {item.session && <span className="session-tag">{item.session}</span>}
+                <div className="item-title">{item.title}</div>
+                {item.speaker && <div className="item-speaker">{item.speaker}</div>}
+                {item.details && <div className="item-details">{item.details}</div>}
+            </div>
+            {item.type === 'break' && <div className="type-indicator break" />}
+            {item.type === 'inaugural' && <div className="type-indicator inaugural" />}
+        </div>
     )
 }
 
@@ -183,59 +84,213 @@ export default function Program3D() {
     const [activeDay, setActiveDay] = useState(1)
 
     return (
-        <section className="section" id="program" style={{
-            background: 'linear-gradient(to bottom, #f8fafc, #e2e8f0)',
-            padding: '4rem 0',
-            overflow: 'hidden'
-        }}>
-            <div className="container" style={{ position: 'relative', zIndex: 1, marginBottom: '2rem' }}>
-                <h2 className="section-title text-center">Programme Schedule</h2>
-
-                <div className="program-tabs">
-                    <button
-                        className={`program-tab ${activeDay === 1 ? 'active' : ''}`}
-                        onClick={() => setActiveDay(1)}
-                    >
-                        <span className="tab-date">09 February 2026</span>
-                        <span className="tab-day">Monday</span>
-                    </button>
-                    <button
-                        className={`program-tab ${activeDay === 2 ? 'active' : ''}`}
-                        onClick={() => setActiveDay(2)}
-                    >
-                        <span className="tab-date">10 February 2026</span>
-                        <span className="tab-day">Tuesday</span>
-                    </button>
-                </div>
-            </div>
-
-            <div style={{ height: '500px', width: '100%', position: 'relative' }}>
-                {/* Navigation Hints */}
-                <div style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    zIndex: 10,
-                    color: '#64748b',
-                    fontSize: '0.9rem',
-                    fontWeight: 500,
-                    pointerEvents: 'none'
-                }}>
-                    Swipe or use Arrow Keys to navigate sessions
-                </div>
-
-                <Canvas camera={{ position: [0, 0, 12], fov: 40 }} dpr={[1, 2]}>
-                    <ambientLight intensity={0.5} />
-                    <pointLight position={[10, 10, 10]} intensity={1} />
-                    {/* Add some subtle stars for depth in the clean background */}
-                    <Stars radius={100} depth={50} count={500} factor={4} saturation={0} fade speed={1} />
-
-                    <Scene activeDayItems={schedule[`day${activeDay}`]} />
-
-                    <Environment preset="city" />
+        <section className="section" id="program" style={{ position: 'relative', height: '800px', overflow: 'hidden', backgroundColor: '#f9fafb' }}>
+            {/* 3D Background - Light Theme */}
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+                {/* Gradient Mesh or Image could go here, putting canvas over simple gradient */}
+                <div style={{ position: 'absolute', width: '100%', height: '100%', background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)' }} />
+                <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+                    <Float speed={1.5} rotationIntensity={1} floatIntensity={1}>
+                        <ParticleField />
+                    </Float>
+                    <ambientLight intensity={0.7} />
                 </Canvas>
             </div>
+
+            {/* Glassmorphism Overlay */}
+            <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', flexDirection: 'column', padding: '4rem 2rem' }}>
+                <h2 className="section-title text-center" style={{ color: '#1e3a8a', marginBottom: '2rem' }}>Programme Schedule</h2>
+
+                <div className="glass-dashboard">
+                    {/* Tabs */}
+                    <div className="dashboard-tabs">
+                        <button
+                            className={`dashboard-tab ${activeDay === 1 ? 'active' : ''}`}
+                            onClick={() => setActiveDay(1)}
+                        >
+                            Day 1 <span style={{ fontSize: '0.8em', opacity: 0.8 }}>(Feb 09)</span>
+                        </button>
+                        <button
+                            className={`dashboard-tab ${activeDay === 2 ? 'active' : ''}`}
+                            onClick={() => setActiveDay(2)}
+                        >
+                            Day 2 <span style={{ fontSize: '0.8em', opacity: 0.8 }}>(Feb 10)</span>
+                        </button>
+                    </div>
+
+                    {/* Scrollable List */}
+                    <div className="dashboard-content custom-scrollbar">
+                        {schedule[`day${activeDay}`].map((item, index) => (
+                            <ScheduleItem key={index} item={item} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <style jsx="true">{`
+                .glass-dashboard {
+                    flex: 1;
+                    background: rgba(255, 255, 255, 0.6);
+                    backdrop-filter: blur(16px);
+                    -webkit-backdrop-filter: blur(16px);
+                    border: 1px solid rgba(255, 255, 255, 0.8);
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+                    max-width: 900px;
+                    margin: 0 auto;
+                    width: 100%;
+                }
+
+                .dashboard-tabs {
+                    display: flex;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                    background: rgba(255, 255, 255, 0.5);
+                }
+
+                .dashboard-tab {
+                    flex: 1;
+                    background: transparent;
+                    border: none;
+                    color: #64748b;
+                    padding: 1.25rem;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .dashboard-tab:hover {
+                    background: rgba(255, 255, 255, 0.8);
+                    color: #1e40af;
+                }
+
+                .dashboard-tab.active {
+                    color: #1e40af;
+                    background: rgba(59, 130, 246, 0.1);
+                    border-bottom: 2px solid #1e40af;
+                }
+
+                .dashboard-content {
+                    flex: 1;
+                    overflow-y: auto;
+                    padding: 2rem;
+                }
+
+                /* Custom Scrollbar */
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 8px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: rgba(0, 0, 0, 0.02);
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: rgba(148, 163, 184, 0.5);
+                    border-radius: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: rgba(148, 163, 184, 0.8);
+                }
+
+                .schedule-item-glass {
+                    background: rgba(255, 255, 255, 0.7);
+                    border: 1px solid rgba(255, 255, 255, 0.6);
+                    border-radius: 12px;
+                    padding: 1.25rem;
+                    margin-bottom: 1rem;
+                    display: flex;
+                    gap: 1.5rem;
+                    position: relative;
+                    transition: all 0.2s ease;
+                    color: #1f2937;
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                }
+
+                .schedule-item-glass:hover {
+                    background: rgba(255, 255, 255, 0.95);
+                    transform: translateX(5px);
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                }
+
+                .time-badge {
+                    font-family: monospace;
+                    background: #eff6ff;
+                    padding: 0.5rem 0.75rem;
+                    border-radius: 6px;
+                    color: #1e40af;
+                    font-weight: 600;
+                    height: fit-content;
+                    white-space: nowrap;
+                    font-size: 0.9rem;
+                    border: 1px solid #dbeafe;
+                }
+
+                .content-area {
+                    flex: 1;
+                }
+
+                .session-tag {
+                    display: inline-block;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    color: #3b82f6;
+                    background: rgba(59, 130, 246, 0.1);
+                    padding: 0.15rem 0.5rem;
+                    border-radius: 4px;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                }
+
+                .item-title {
+                    font-size: 1.15rem;
+                    font-weight: 700;
+                    margin-bottom: 0.25rem;
+                    line-height: 1.4;
+                    color: #1e3a8a;
+                }
+
+                .item-speaker {
+                    color: #d97706; /* Amber-600 */
+                    font-weight: 600;
+                    margin-bottom: 0.25rem;
+                }
+
+                .item-details {
+                    color: #4b5563;
+                    font-size: 0.85rem;
+                    font-style: italic;
+                }
+
+                .type-indicator {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 4px;
+                    border-radius: 0 12px 12px 0;
+                }
+
+                .type-indicator.break {
+                    background-color: #f59e0b; /* Orange */
+                }
+                
+                .type-indicator.inaugural {
+                    background-color: #eab308; /* Yellow */
+                }
+
+                @media (max-width: 768px) {
+                    .schedule-item-glass {
+                        flex-direction: column;
+                        gap: 0.75rem;
+                    }
+                    .time-badge {
+                        align-self: flex-start;
+                    }
+                }
+            `}</style>
         </section>
     )
 }

@@ -45,13 +45,13 @@ function Speakers() {
             name: "Prof. N Shankar Ganesh",
             designation: "Professor and Director, R&D",
             affiliation: "Global Institute of Engineering and Technology, Ranipet, Tamil Nadu",
-            image: "/assets/images/speaker_8.jpg"
+            image: "/assets/images/speaker_8.jpeg"
         },
         {
             name: "Mr Abhijeet Chaudhari",
             designation: "Director",
             affiliation: "Enrecover Pvt. Limited, Pune, Maharashtra",
-            image: "/assets/images/speaker_9.jpg"
+            image: "/assets/images/speaker_9.jpeg"
         },
         {
             name: "Prof. Tangellapalli Srinivas",
