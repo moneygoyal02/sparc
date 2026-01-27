@@ -9,10 +9,12 @@ import Details from './components/Details'
 import Registration from './components/Registration'
 import Footer from './components/Footer'
 import ThreeBackground from './components/ThreeBackground'
+import ParticleTrail from './components/ParticleTrail'
 
 function App() {
     return (
         <div className="App">
+            <ParticleTrail />
             <ThreeBackground />
             <Header />
             <Hero />
