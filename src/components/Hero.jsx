@@ -1,7 +1,20 @@
 import { useParallax } from '../hooks/useParallax'
+import { useTypingEffect } from '../hooks/useTypingEffect'
 
 function Hero() {
     const titleParallax = useParallax(0.1)
+
+    const { displayedText } = useTypingEffect(
+        [
+            'SPARC Sponsored 2-Day Workshop',
+            'Waste Heat Recovery Experts',
+            'Thermal Polygeneration Systems',
+            'Feb 09-10, 2026 @ NIT Jalandhar'
+        ],
+        50,
+        30,
+        2500
+    )
 
     return (
         <section className="hero" id="home">
@@ -41,7 +54,10 @@ function Hero() {
 
                 {/* Workshop Title */}
                 <div className="hero-title-section" ref={titleParallax.ref} style={titleParallax.style}>
-                    <div className="hero-tag">SPARC Sponsored 2-Day Workshop</div>
+                    <div className="hero-tag typing-text">
+                        {displayedText}
+                        <span className="typing-cursor">|</span>
+                    </div>
                     <h1 className="hero-main-title">
                         Waste Heat Recovery-Based Thermal Polygeneration
                         Energy Systems

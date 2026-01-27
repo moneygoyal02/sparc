@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useMagnetic } from '../hooks/useMagnetic'
 
 function Header() {
     const [scrolled, setScrolled] = useState(false)
@@ -26,6 +27,9 @@ function Header() {
             })
         }
     }
+
+    const registrationRef = useRef(null)
+    useMagnetic(registrationRef, 0.3)
 
     return (
         <header className={`header ${scrolled ? 'scrolled' : ''}`}>
@@ -77,7 +81,13 @@ function Header() {
                             </a>
                         </li>
                         <li>
-                            <a href="#registration" onClick={(e) => scrollToSection(e, 'registration')} className="btn-nav">
+                            <a
+                                href="#registration"
+                                onClick={(e) => scrollToSection(e, 'registration')}
+                                className="btn-nav"
+                                ref={registrationRef}
+                                style={{ display: 'inline-block' }} /* Important for transform */
+                            >
                                 Registration
                             </a>
                         </li>
