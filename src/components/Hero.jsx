@@ -75,7 +75,7 @@ function Hero() {
                     <div className="detail-box">
                         <div className="detail-content">
                             <span className="detail-label">WHERE</span>
-                            <span className="detail-value">NIT Jalandhar, Punjab, India</span>
+                            <span className="detail-value">NIT Jalandhar, Punjab</span>
                         </div>
                     </div>
                     <div className="detail-box">
