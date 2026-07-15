@@ -81,13 +81,13 @@ function Organizers() {
     const experts = [
         {
             name: "Prof. Christos N. Markides",
-            designation: "Professor of Clean Energy Technologies",
+            designation: "Professor of Clean Energy Technologies, Dept. of Chemical Engineering",
             institution: "Imperial College London, UK",
             image: "/assets/images/speaker_1.png"
         },
         {
             name: "Prof. Umberto Desideri",
-            designation: "Professor",
+            designation: "Professor, Dept. of Energy, Systems, Territory and Construction Engineering (DESTEC)",
             institution: "University of Pisa, Italy",
             image: "/assets/images/speaker_2.png"
         }

@@ -7,13 +7,13 @@ function Speakers() {
     const speakers = [
         {
             name: "Prof. Umberto Desideri",
-            designation: "Professor",
+            designation: "Professor, Dept. of Energy, Systems, Territory and Construction Engineering (DESTEC)",
             affiliation: "University of Pisa, Italy",
             image: "/assets/images/speaker_2.png"
         },
         {
             name: "Prof. Christos N. Markides",
-            designation: "Professor",
+            designation: "Professor of Clean Energy Technologies, Dept. of Chemical Engineering",
             affiliation: "Imperial College London, UK",
             image: "/assets/images/speaker_1.png"
         },
