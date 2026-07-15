@@ -1,6 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Line } from '@react-three/drei'
+import React, { useState, useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
 // ─── Schedule Data ───────────────────────────────────────────────────────────
@@ -28,117 +26,228 @@ const schedule = {
     ]
 }
 
-// ─── Subtle Constellation Scene ──────────────────────────────────────────────
-
-function ConstellationNetwork() {
-    const groupRef = useRef()
-    const nodeCount = 30
-    const radius = 3.5
-
-    // Generate random stable positions on render (stable inside canvas life)
-    const nodePositions = useMemo(() => {
-        const pos = []
-        for (let i = 0; i < nodeCount; i++) {
-            const theta = Math.random() * Math.PI * 2
-            const phi = Math.acos((Math.random() * 2) - 1)
-            const r = radius * (0.8 + Math.random() * 0.4)
-            pos.push([
-                r * Math.sin(phi) * Math.cos(theta),
-                r * Math.sin(phi) * Math.sin(theta),
-                (Math.random() - 0.5) * 2
-            ])
-        }
-        return pos
-    }, [])
-
-    // Faint connection lines between close neighbors
-    const connections = useMemo(() => {
-        const lines = []
-        for (let i = 0; i < nodeCount; i++) {
-            for (let j = i + 1; j < nodeCount; j++) {
-                const dx = nodePositions[i][0] - nodePositions[j][0]
-                const dy = nodePositions[i][1] - nodePositions[j][1]
-                const dz = nodePositions[i][2] - nodePositions[j][2]
-                const dist = Math.sqrt(dx * dx + dy * dy + dz * dz)
-                
-                if (dist < 2.0) {
-                    lines.push({
-                        start: nodePositions[i],
-                        end: nodePositions[j],
-                        id: `${i}-${j}`
-                    })
-                }
-            }
-        }
-        return lines
-    }, [nodePositions])
-
-    useFrame(({ clock }) => {
-        if (groupRef.current) {
-            // Faint, slow, professional rotation - non-distracting
-            groupRef.current.rotation.y = clock.getElapsedTime() * 0.02
-            groupRef.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.01) * 0.05
-        }
-    })
-
-    return (
-        <group ref={groupRef}>
-            {/* Connections */}
-            {connections.map((conn) => (
-                <Line
-                    key={conn.id}
-                    points={[conn.start, conn.end]}
-                    color="#93c5fd"
-                    lineWidth={0.5}
-                    transparent
-                    opacity={0.12}
-                />
-            ))}
-
-            {/* Tiny Nodes */}
-            {nodePositions.map((pos, idx) => (
-                <mesh key={`pt-${idx}`} position={pos}>
-                    <sphereGeometry args={[0.04, 8, 8]} />
-                    <meshBasicMaterial color="#3b82f6" transparent opacity={0.3} />
-                </mesh>
-            ))}
-        </group>
-    )
-}
-
-// Separate component memoized to completely disconnect from state updates
-const ProgramBackgroundCanvas = React.memo(() => {
-    return (
-        <div className="section-3d-bg">
-            <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 1.5]}>
-                <ambientLight intensity={1.5} />
-                <ConstellationNetwork />
-            </Canvas>
-        </div>
-    )
-})
-
-// ─── Schedule Component ──────────────────────────────────────────────────────
-
 export default function Program3D() {
     const [activeDay, setActiveDay] = useState(1)
     const activeList = schedule[`day${activeDay}`]
+    const canvasContainerRef = useRef(null)
+
+    // Vanilla Three.js constellation network - 100% independent of React re-renders
+    useEffect(() => {
+        if (!canvasContainerRef.current) return
+
+        const container = canvasContainerRef.current
+        const width = container.clientWidth || window.innerWidth
+        const height = container.clientHeight || 600
+
+        // Scene Setup
+        const scene = new THREE.Scene()
+        const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100)
+        camera.position.z = 8
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+        renderer.setSize(width, height)
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        container.appendChild(renderer.domElement)
+
+        // Mouse Parallax movement tracking
+        const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 }
+        const handleMouseMove = (e) => {
+            mouse.targetX = (e.clientX / window.innerWidth) * 2 - 1
+            mouse.targetY = -(e.clientY / window.innerHeight) * 2 + 1
+        }
+        window.addEventListener('mousemove', handleMouseMove)
+
+        // Create elegant round particle texture
+        const createCircleTexture = () => {
+            const size = 64
+            const canvas = document.createElement('canvas')
+            canvas.width = size
+            canvas.height = size
+            const ctx = canvas.getContext('2d')
+            
+            const grad = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2)
+            grad.addColorStop(0, 'rgba(59, 130, 246, 1)')
+            grad.addColorStop(0.2, 'rgba(59, 130, 246, 0.8)')
+            grad.addColorStop(0.5, 'rgba(96, 165, 250, 0.2)')
+            grad.addColorStop(1, 'rgba(255, 255, 255, 0)')
+            
+            ctx.fillStyle = grad
+            ctx.fillRect(0, 0, size, size)
+            
+            return new THREE.CanvasTexture(canvas)
+        }
+        const particleTexture = createCircleTexture()
+
+        // Create Constellation Network
+        const group = new THREE.Group()
+        scene.add(group)
+
+        const count = 45
+        const radius = 5
+        const positions = []
+        const velocities = []
+
+        // Generate points
+        for (let i = 0; i < count; i++) {
+            const theta = Math.random() * Math.PI * 2
+            const phi = Math.acos((Math.random() * 2) - 1)
+            const r = radius * (0.5 + Math.random() * 0.7)
+            
+            const x = r * Math.sin(phi) * Math.cos(theta)
+            const y = r * Math.sin(phi) * Math.sin(theta)
+            const z = (Math.random() - 0.5) * 3
+
+            positions.push(x, y, z)
+            velocities.push(
+                (Math.random() - 0.5) * 0.003,
+                (Math.random() - 0.5) * 0.003,
+                (Math.random() - 0.5) * 0.003
+            )
+        }
+
+        // Particle Geometry and Material
+        const particleGeo = new THREE.BufferGeometry()
+        particleGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
+        
+        const particleMat = new THREE.PointsMaterial({
+            size: 0.28,
+            map: particleTexture,
+            transparent: true,
+            opacity: 0.7,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        })
+        const points = new THREE.Points(particleGeo, particleMat)
+        group.add(points)
+
+        // Faint Line Connections Geometry
+        const maxConnections = 120
+        const lineGeo = new THREE.BufferGeometry()
+        const linePos = new Float32Array(maxConnections * 2 * 3)
+        lineGeo.setAttribute('position', new THREE.BufferAttribute(linePos, 3))
+        
+        const lineMat = new THREE.LineBasicMaterial({
+            color: 0x93c5fd,
+            transparent: true,
+            opacity: 0.16,
+            depthWrite: false
+        })
+        const lines = new THREE.LineSegments(lineGeo, lineMat)
+        group.add(lines)
+
+        // Animation Loop
+        let animationFrameId
+        const clock = new THREE.Clock()
+
+        const animate = () => {
+            animationFrameId = requestAnimationFrame(animate)
+
+            const delta = clock.getDelta()
+            const time = clock.getElapsedTime()
+
+            // Update particle positions
+            const posAttr = points.geometry.attributes.position
+            const arr = posAttr.array
+
+            for (let i = 0; i < count; i++) {
+                const i3 = i * 3
+                // Apply velocities
+                arr[i3] += velocities[i3]
+                arr[i3 + 1] += velocities[i3 + 1]
+                arr[i3 + 2] += velocities[i3 + 2]
+
+                // Bounce particles back inside bounding sphere
+                const dist = Math.sqrt(arr[i3]**2 + arr[i3+1]**2 + arr[i3+2]**2)
+                if (dist > radius * 1.2) {
+                    velocities[i3] *= -1
+                    velocities[i3 + 1] *= -1
+                    velocities[i3 + 2] *= -1
+                }
+            }
+            posAttr.needsUpdate = true
+
+            // Update line connections
+            let lineIdx = 0
+            const lArr = lines.geometry.attributes.position.array
+
+            for (let i = 0; i < count; i++) {
+                for (let j = i + 1; j < count; j++) {
+                    const i3 = i * 3
+                    const j3 = j * 3
+                    
+                    const dx = arr[i3] - arr[j3]
+                    const dy = arr[i3 + 1] - arr[j3 + 1]
+                    const dz = arr[i3 + 2] - arr[j3 + 2]
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz)
+
+                    if (dist < 1.8 && lineIdx < maxConnections) {
+                        const lOffset = lineIdx * 6
+                        lArr[lOffset] = arr[i3]
+                        lArr[lOffset + 1] = arr[i3 + 1]
+                        lArr[lOffset + 2] = arr[i3 + 2]
+
+                        lArr[lOffset + 3] = arr[j3]
+                        lArr[lOffset + 4] = arr[j3 + 1]
+                        lArr[lOffset + 5] = arr[j3 + 2]
+                        lineIdx++
+                    }
+                }
+            }
+            // Clear remaining line coordinates to avoid drawing lines back to origin
+            for (let i = lineIdx; i < maxConnections; i++) {
+                const lOffset = i * 6
+                lArr[lOffset] = 0; lArr[lOffset+1] = 0; lArr[lOffset+2] = 0;
+                lArr[lOffset+3] = 0; lArr[lOffset+4] = 0; lArr[lOffset+5] = 0;
+            }
+            lines.geometry.attributes.position.needsUpdate = true
+
+            // Smooth parallax interaction
+            mouse.x += (mouse.targetX - mouse.x) * 0.05
+            mouse.y += (mouse.targetY - mouse.y) * 0.05
+
+            group.rotation.y = time * 0.015 + mouse.x * 0.12
+            group.rotation.x = Math.sin(time * 0.01) * 0.05 - mouse.y * 0.12
+
+            renderer.render(scene, camera)
+        }
+        animate()
+
+        // Handle Resize
+        const handleResize = () => {
+            const w = container.clientWidth || window.innerWidth
+            const h = container.clientHeight || 600
+            camera.aspect = w / h
+            camera.updateProjectionMatrix()
+            renderer.setSize(w, h)
+        }
+        window.addEventListener('resize', handleResize)
+
+        // Cleanup
+        return () => {
+            cancelAnimationFrame(animationFrameId)
+            window.removeEventListener('mousemove', handleMouseMove)
+            window.removeEventListener('resize', handleResize)
+            container.removeChild(renderer.domElement)
+            particleTexture.dispose()
+            particleGeo.dispose()
+            particleMat.dispose()
+            lineGeo.dispose()
+            lineMat.dispose()
+            renderer.dispose()
+        }
+    }, [])
 
     return (
         <section id="program" className="program-dashboard-section">
             
-            {/* 3D Background Canvas - Decoupled from tab state */}
-            <ProgramBackgroundCanvas />
+            {/* Native Canvas Container - 100% decoupled from React render loops */}
+            <div className="section-3d-bg" ref={canvasContainerRef} />
 
             <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 
                 {/* Header Block */}
                 <div className="section-header-block">
-                    <span className="section-eyebrow">Technical Schedule</span>
                     <h2 className="section-title-main">Programme Schedule</h2>
-                    <p className="section-subtitle">
-                        Comprehensive daily breakdown of technical modules, industry lectures, hands-on sessions, and networking breaks.
-                    </p>
                 </div>
 
                 {/* Day Switcher Tabs */}
@@ -217,7 +326,13 @@ export default function Program3D() {
                     height: 100%;
                     z-index: 1;
                     pointer-events: none;
-                    opacity: 0.35; /* Faint backdrop watermark */
+                    opacity: 0.6; /* Perfectly transparent watermark constellation */
+                }
+
+                .section-3d-bg canvas {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
                 }
 
                 .section-header-block {
