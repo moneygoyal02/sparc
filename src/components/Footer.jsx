@@ -32,7 +32,7 @@ function Footer() {
                     <p className="developer-credit">
                         Developed by <a href="https://www.linkedin.com/in/money-goyal" target="_blank" rel="noopener noreferrer">Money Goyal</a>
                         <br />
-                        B.Tech 3rd Year, Mechanical Engineering, NIT Jalandhar
+                        B.Tech Final-Year, Mechanical Engineering, NIT Jalandhar
                     </p>
                 </div>
             </div>
