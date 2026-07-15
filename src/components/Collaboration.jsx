@@ -28,7 +28,7 @@ function Collaboration() {
                                         <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                 </div>
-                                <span>Dr B R Ambedkar National Institute of Technology, Jalandhar</span>
+                                <span>Dr B R Ambedkar National Institute of Technology Jalandhar, Punjab, India - 144008</span>
                             </div>
                         </div>
 

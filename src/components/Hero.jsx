@@ -7,9 +7,9 @@ function Hero() {
     const { displayedText } = useTypingEffect(
         [
             'SPARC Sponsored 2-Day Workshop',
-            'Waste Heat Recovery Experts',
+            'Computational Tools & Process Design',
             'Thermal Polygeneration Systems',
-            'Feb 09-10, 2026 @ NIT Jalandhar'
+            'Sep 03-04, 2026 @ NIT Jalandhar'
         ],
         50,
         30,
@@ -59,8 +59,8 @@ function Hero() {
                         <span className="typing-cursor">|</span>
                     </div>
                     <h1 className="hero-main-title">
-                        Waste Heat Recovery-Based Thermal Polygeneration
-                        Energy Systems
+                        Advancing Heat Recovery Thermal Polygeneration:
+                        Computational Tools, Process Design, and Practical Training
                     </h1>
                 </div>
 
@@ -69,7 +69,7 @@ function Hero() {
                     <div className="detail-box">
                         <div className="detail-content">
                             <span className="detail-label">WHEN</span>
-                            <span className="detail-value">February 09-10, 2026</span>
+                            <span className="detail-value">September 3-4, 2026</span>
                         </div>
                     </div>
                     <div className="detail-box">

@@ -5,9 +5,9 @@ function Registration() {
                 <h2 className="section-title">Registration & Accommodation</h2>
                 <div className="registration-box">
                     <h3>Registration Details</h3>
-                    <p>Registration is compulsory. No fee for registration, course, and certification.</p>
-                    <p><strong>Limited Seats</strong></p>
-                    <p className="deadline">Deadline: February 02, 2026</p>
+                    <p>There is no online participation. No registration fee. Registration is compulsory for the participants.</p>
+                    <p><strong>Limited Seats Available</strong> — Register early to reserve your participation.</p>
+                    <p className="deadline">Registration Deadline: August 31, 2026</p>
                     <a
                         href="https://forms.gle/brY5CHACrK6EZXba6"
                         target="_blank"

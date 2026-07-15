@@ -1,15 +1,15 @@
 function Details() {
     const topics = [
-        "Fundamentals of waste heat recovery and thermal polygeneration systems",
-        "Sources and characterization of industrial and process waste heat",
-        "Energy and exergo-economic analysis of thermal systems",
-        "Exergy-based optimization techniques for polygeneration systems",
-        "Design and integration of combined power, heating, cooling, and refrigeration systems",
-        "Advanced cycles and working fluids for waste heat recovery applications",
-        "System performance evaluation, efficiency enhancement, and sustainability assessment",
-        "Case studies and real-world applications of waste heat recovery systems",
-        "Recent research trends and future directions in next-generation polygeneration systems",
-        "Hands-on Training Session on Computational Tools for the Solutions of Waste Heat Recovery Thermal Polygeneration"
+        "Sources, assessment, and characterization of industrial and process heat recovery opportunities",
+        "Energy, exergy, and exergo-economic analysis for integrated thermal systems",
+        "Computational methods and exergy-based optimization techniques for thermal polygeneration applications",
+        "Process design and integration of combined power, heating, cooling, and refrigeration systems",
+        "Advanced thermal cycles, system configurations, and selection of working fluids for heat recovery applications",
+        "Performance evaluation, efficiency enhancement, and sustainability assessment of thermal energy systems",
+        "Modeling, simulation, and design tools for heat recovery and thermal polygeneration processes",
+        "Case studies and industrial applications demonstrating practical implementation and operational insights",
+        "Emerging research trends, technological advancements, and future directions in next-generation thermal polygeneration systems",
+        "Hands-on Training Session on Computational Tools for Analysis, Design, and Optimization of Heat Recovery Thermal Polygeneration Systems"
     ]
 
     return (
