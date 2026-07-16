@@ -73,7 +73,7 @@ const speakers = [
         type: 'Industry Speaker',
         designation: 'Managing Director',
         affiliation: 'S.A.P. Automations India Pvt. Ltd., New Delhi',
-        image: '/assets/images/speaker_arijit.jpg'
+        image: '/assets/images/speaker_arijit.jpeg'
     },
     {
         name: 'Dr. Ankit Gupta',
