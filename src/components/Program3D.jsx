@@ -419,6 +419,7 @@ export default function Program3D({ enableEffects = true }) {
                 </div>
 
                 {/* Day Switcher Tabs */}
+                { /*
                 <div className="dashboard-day-tabs">
                     <button
                         className={`day-tab-btn ${activeDay === 1 ? 'active' : ''}`}
@@ -435,8 +436,14 @@ export default function Program3D({ enableEffects = true }) {
                         <span className="tab-sub-text">September 4, 2026</span>
                     </button>
                 </div>
+                */}
+
+                <div className="schedule-placeholder-message">
+                    <p>Programme schedule will be announced soon. Stay tuned for updates.</p>
+                </div>
 
                 {/* Schedule Card Grid Layout */}
+                { /*
                 <div className="schedule-cards-grid">
                     {activeList.map((item) => (
                         <div
@@ -498,6 +505,7 @@ export default function Program3D({ enableEffects = true }) {
                         </div>
                     ))}
                 </div>
+                */}
             </div>
 
             <style>{`
@@ -610,6 +618,37 @@ export default function Program3D({ enableEffects = true }) {
                     display: grid;
                     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
                     gap: 2rem;
+                }
+
+                .schedule-placeholder-message {
+                    max-width: 760px;
+                    margin: 3rem auto 0;
+                    padding: 2.2rem 2rem;
+                    background: rgba(255, 255, 255, 0.96);
+                    border: 1px solid rgba(59, 130, 246, 0.18);
+                    border-radius: 24px;
+                    box-shadow: 0 28px 80px -40px rgba(30, 64, 175, 0.4);
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                    backdrop-filter: blur(10px);
+                }
+
+                .schedule-placeholder-message::before {
+                    content: '📅';
+                    position: absolute;
+                    top: -10px;
+                    right: -10px;
+                    font-size: 3rem;
+                    opacity: 0.22;
+                }
+
+                .schedule-placeholder-message p {
+                    margin: 0;
+                    color: #1e3a8a;
+                    font-size: 1.05rem;
+                    font-weight: 600;
+                    line-height: 1.75;
                 }
 
                 /* Schedule Card Styling */
