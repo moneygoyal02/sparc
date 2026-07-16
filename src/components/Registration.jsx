@@ -18,7 +18,7 @@ function Registration() {
                         Registration Deadline: August 31, 2026
                     </p>
                     <a
-                        href="https://forms.gle/brY5CHACrK6EZXba6"
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSdhcWSTLteBP1vlI5iPPoFS5qo0NCispDsVfMlIDPRsVsvxBg/viewform"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary"
