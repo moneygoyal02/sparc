@@ -62,7 +62,7 @@ function Organizers() {
             image: '/assets/images/patron_1.jpg'
         },
         {
-            name: 'Prof. Ajay Bansal',
+            name: 'Prof. Anish Kumar Sachdeva',
             role: 'Co-Patron',
             designation: 'Registrar',
             institution: 'NIT Jalandhar, Punjab',
