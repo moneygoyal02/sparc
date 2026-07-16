@@ -4,82 +4,99 @@ import ScrollReveal from './ScrollReveal'
 function Speakers() {
     const titleParallax = useParallax(-0.05)
 
-    const speakers = [
-        {
-            name: 'Prof. Umberto Desideri',
-            type: 'International Expert',
-            designation:
-                'Professor, Dept. of Energy, Systems, Territory and Construction Engineering (DESTEC)',
-            affiliation: 'University of Pisa, Italy',
-            image: '/assets/images/speaker_2.png'
-        },
-        {
-            name: 'Prof. Christos N. Markides',
-            type: 'International Expert',
-            designation:
-                'Professor of Clean Energy Technologies, Dept. of Chemical Engineering',
-            affiliation: 'Imperial College London, UK',
-            image: '/assets/images/speaker_1.png'
-        },
-        {
-            name: 'Dr. Manish Kaushal',
-            type: 'Academic Speaker',
-            designation: 'Assistant Professor',
-            affiliation:
-                'Indian Institute of Technology Kharagpur, West Bengal',
-            image: '/assets/images/speaker_3.webp'
-        },
-        {
-            name: 'Mr. Vinay Devasthali',
-            type: 'Industry Speaker',
-            designation: 'Director',
-            affiliation: 'Saveeco Energy India Pvt. Ltd., Pune, Maharashtra',
-            image: '/assets/images/speaker_4.jpg'
-        },
-        {
-            name: 'Prof. R Saravanan',
-            type: 'Academic Speaker',
-            designation: 'Professor, Dept. of Mechanical Engineering',
-            affiliation: 'Anna University, Chennai, Tamil Nadu',
-            image: '/assets/images/speaker_5.jpg'
-        },
-        {
-            name: 'Prof. Sudipta De',
-            type: 'Academic Speaker',
-            designation: 'Professor, Dept. of Mechanical Engineering',
-            affiliation: 'Jadavpur University, Kolkata, West Bengal',
-            image: '/assets/images/speaker_7.jpg'
-        },
-        {
-            name: 'Prof. N Shankar Ganesh',
-            type: 'Academic Speaker',
-            designation: 'Professor and Director, R&D',
-            affiliation:
-                'Global Institute of Engineering and Technology, Ranipet, Tamil Nadu',
-            image: '/assets/images/speaker_8.jpeg'
-        },
-        {
-            name: 'Mr. Abhijeet Chaudhari',
-            type: 'Industry Speaker',
-            designation: 'Director',
-            affiliation: 'Enrecover Pvt. Limited, Pune, Maharashtra',
-            image: '/assets/images/speaker_9.jpeg'
-        },
-        {
-            name: 'Prof. Tangellapalli Srinivas',
-            type: 'Workshop Coordinator',
-            designation: 'Professor',
-            affiliation: 'NIT Jalandhar',
-            image: '/assets/images/speaker_6.jpg'
-        },
-        {
-            name: 'Dr. Rajan Kumar',
-            type: 'Workshop Co-Coordinator',
-            designation: 'Assistant Professor',
-            affiliation: 'NIT Jalandhar',
-            image: '/assets/images/organizer_2.png'
-        }
-    ]
+const speakers = [
+    {
+        name: 'Prof. Christos N. Markides',
+        type: 'International Expert',
+        designation: 'Professor',
+        affiliation: 'Imperial College London, UK',
+        image: '/assets/images/speaker_1.png'
+    },
+    {
+        name: 'Prof. Umberto Desideri',
+        type: 'International Expert',
+        designation: 'Professor',
+        affiliation: 'University of Pisa, Italy',
+        image: '/assets/images/speaker_2.png'
+    },
+    {
+        name: 'Prof. Anil Kumar Emadabathuni',
+        type: 'Academic Speaker',
+        designation: 'Professor, Department of Mechanical Engineering',
+        affiliation: 'IIT Tirupati',
+        image: '/assets/images/speaker_anil.jpg'
+    },
+    {
+        name: 'Dr. Jagabandhu Kole',
+        type: 'Industry Speaker',
+        designation: 'Sr Vice President R & D',
+        affiliation: 'JSW Cements, Mumbai',
+        image: '/assets/images/speaker_jagabandhu.jpg'
+    },
+    {
+        name: 'Prof. AVSSKS Gupta',
+        type: 'Academic Speaker',
+        designation: 'Professor, Department of Mechanical Engineering',
+        affiliation: 'JNTU, Hyderabad',
+        image: '/assets/images/speaker_gupta.jpeg'
+    },
+    {
+        name: 'Mr. Abhijeet Chaudhari',
+        type: 'Industry Speaker',
+        designation: 'Director',
+        affiliation: 'Enrecover Pvt. Limited, Pune',
+        image: '/assets/images/speaker_9.jpeg'
+    },
+    {
+        name: 'Prof. S Suresh',
+        type: 'Academic Speaker',
+        designation: 'Professor, Department of Mechanical Engineering',
+        affiliation: 'NIT Tiruchirappalli',
+        image: '/assets/images/speaker_suresh.jpg'
+    },
+    {
+        name: 'Dr. Abhishek Agarwal',
+        type: 'Industry Speaker',
+        designation: 'Managing Director',
+        affiliation: 'Siemens Energy India Limited, New Delhi',
+        image: '/assets/images/speaker_abhishek.jpg'
+    },
+    {
+        name: 'Prof. Eswaramoorthy Muthusamy',
+        type: 'Academic Speaker',
+        designation: 'Professor, School of Mechanical Engineering',
+        affiliation: 'Shri Mata Vaishno Devi University, Katra',
+        image: '/assets/images/speaker_eswaramoorthy.jpg'
+    },
+    {
+        name: 'Mr. Arijit Ghosh',
+        type: 'Industry Speaker',
+        designation: 'Managing Director',
+        affiliation: 'S.A.P. Automations India Pvt. Ltd., New Delhi',
+        image: '/assets/images/speaker_arijit.jpg'
+    },
+    {
+        name: 'Dr. Ankit Gupta',
+        type: 'Research Speaker',
+        designation: 'Scientist-E',
+        affiliation: 'CSIR–National Environmental Engineering Research Institute (NEERI), New Delhi',
+        image: '/assets/images/speaker_ankit.jpg'
+    },
+    {
+        name: 'Prof. T Srinivas',
+        type: 'Workshop Coordinator',
+        designation: 'Professor, Department of Mechanical Engineering',
+        affiliation: 'NIT Jalandhar',
+        image: '/assets/images/speaker_6.jpg'
+    },
+    {
+        name: 'Dr. Rajan Kumar',
+        type: 'Workshop Co-Coordinator',
+        designation: 'Assistant Professor, Department of Mechanical Engineering',
+        affiliation: 'NIT Jalandhar',
+        image: '/assets/images/organizer_2.png'
+    }
+];
 
     return (
         <section className="section speakers-section" id="speakers">
