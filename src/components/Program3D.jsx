@@ -1,38 +1,185 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
 // ─── Schedule Data ───────────────────────────────────────────────────────────
 const schedule = {
     day1: [
-        { id: 1, time: "10.00 – 10.40 am", title: "Inaugural Session", type: "special", label: "Inaugural", desc: "Official commencement and opening ceremony of the SPARC workshop." },
-        { id: 2, time: "10.40 – 11.00 am", title: "Tea Break", type: "break", label: "Break", desc: "Morning refreshments and networking session." },
-        { id: 3, time: "11.00 – 11.50 am", session: "Session 1", title: "Decentralized Polygeneration Solutions for Reliable and Sustainable Rural Energy", speaker: "Prof. R Saravanan", details: "Anna University, Chennai", type: "session", label: "Expert Lecture", desc: "Exploration of localized polygeneration designs to meet rural energy demands reliably and sustainably." },
-        { id: 4, time: "11.55 am – 12.45 pm", session: "Session 2", title: "Polygeneration Using Waste Heat: An Overview and A Few Case Studies", speaker: "Prof. Sudipta De", details: "Jadavpur University, Kolkata", type: "session", label: "Expert Lecture", desc: "Overview of waste heat recovery options and detailed analysis of practical polygeneration installations." },
-        { id: 5, time: "12.45 – 02.00 pm", title: "Lunch Break", type: "break", label: "Break", desc: "Midday networking lunch for delegates and participants." },
-        { id: 6, time: "02.00 – 02.50 pm", session: "Session 3", title: "Waste Heat Recovery Applications & Opportunities in Industrial Sectors", speaker: "Mr Abhijeet Chaudhari", details: "Enrecover Pvt. Ltd., Pune", type: "session", label: "Industry Session", desc: "Industrial applications focusing on high-energy-intensity sectors using advanced recovery technologies." },
-        { id: 7, time: "02.50 – 03.05 pm", title: "Tea Break", type: "break", label: "Break", desc: "Afternoon tea and networking." },
-        { id: 8, time: "03.05 – 03.25 pm", session: "Session 4", title: "Students' Experiences, Feedback & Suggestions on SPARC Scheme", speaker: "Dr Manish Kaushal", details: "IIT Kharagpur", type: "session", label: "Feedback Session", desc: "Interactive feedback session highlighting student outcomes and research takeaways under SPARC." },
-        { id: 9, time: "03.30 – 05.00 pm", session: "Session 5", title: "Hands-on Training Session on Computational Tools for Analysis, Design & Optimization", speaker: "Dr T Srinivas & Dr Rajan Kumar", details: "NIT Jalandhar", type: "hands-on", label: "Hands-on Training", desc: "Practical workshop session detailing modeling, design, and exergy optimization computational frameworks." }
+        {
+            id: 1,
+            time: '10.00 – 10.40 am',
+            title: 'Inaugural Session',
+            type: 'special',
+            label: 'Inaugural',
+            desc: 'Official commencement and opening ceremony of the SPARC workshop.'
+        },
+        {
+            id: 2,
+            time: '10.40 – 11.00 am',
+            title: 'Tea Break',
+            type: 'break',
+            label: 'Break',
+            desc: 'Morning refreshments and networking session.'
+        },
+        {
+            id: 3,
+            time: '11.00 – 11.50 am',
+            session: 'Session 1',
+            title: 'Decentralized Polygeneration Solutions for Reliable and Sustainable Rural Energy',
+            speaker: 'Prof. R Saravanan',
+            details: 'Anna University, Chennai',
+            type: 'session',
+            label: 'Expert Lecture',
+            desc: 'Exploration of localized polygeneration designs to meet rural energy demands reliably and sustainably.'
+        },
+        {
+            id: 4,
+            time: '11.55 am – 12.45 pm',
+            session: 'Session 2',
+            title: 'Polygeneration Using Waste Heat: An Overview and A Few Case Studies',
+            speaker: 'Prof. Sudipta De',
+            details: 'Jadavpur University, Kolkata',
+            type: 'session',
+            label: 'Expert Lecture',
+            desc: 'Overview of waste heat recovery options and detailed analysis of practical polygeneration installations.'
+        },
+        {
+            id: 5,
+            time: '12.45 – 02.00 pm',
+            title: 'Lunch Break',
+            type: 'break',
+            label: 'Break',
+            desc: 'Midday networking lunch for delegates and participants.'
+        },
+        {
+            id: 6,
+            time: '02.00 – 02.50 pm',
+            session: 'Session 3',
+            title: 'Waste Heat Recovery Applications & Opportunities in Industrial Sectors',
+            speaker: 'Mr. Abhijeet Chaudhari',
+            details: 'Enrecover Pvt. Ltd., Pune',
+            type: 'session',
+            label: 'Industry Session',
+            desc: 'Industrial applications focusing on high-energy-intensity sectors using advanced recovery technologies.'
+        },
+        {
+            id: 7,
+            time: '02.50 – 03.05 pm',
+            title: 'Tea Break',
+            type: 'break',
+            label: 'Break',
+            desc: 'Afternoon tea and networking.'
+        },
+        {
+            id: 8,
+            time: '03.05 – 03.25 pm',
+            session: 'Session 4',
+            title: "Students' Experiences, Feedback & Suggestions on SPARC Scheme",
+            speaker: 'Dr Manish Kaushal',
+            details: 'IIT Kharagpur',
+            type: 'session',
+            label: 'Feedback Session',
+            desc: 'Interactive feedback session highlighting student outcomes and research takeaways under SPARC.'
+        },
+        {
+            id: 9,
+            time: '03.30 – 05.00 pm',
+            session: 'Session 5',
+            title: 'Hands-on Training Session on Computational Tools for Analysis, Design & Optimization',
+            speaker: 'Dr. T. Srinivas & Dr. Rajan Kumar',
+            details: 'NIT Jalandhar',
+            type: 'hands-on',
+            label: 'Hands-on Training',
+            desc: 'Practical workshop session detailing modeling, design, and exergy optimization computational frameworks.'
+        }
     ],
     day2: [
-        { id: 1, time: "10.00 – 10.50 am", session: "Session 6", title: "Challenges and Technologies for the Decarbonisation of Industrial Energy Users", speaker: "Prof. Umberto Desideri", details: "University of Pisa, Italy", type: "session", label: "Expert Lecture", desc: "An in-depth look into technological options and challenges for industrial decarbonization." },
-        { id: 2, time: "10.50 – 11.05 am", title: "Tea Break", type: "break", label: "Break", desc: "Morning refreshments." },
-        { id: 3, time: "11.05 – 11.55 am", session: "Session 7", title: "Industry Lecture on Energy Recovery & Sustainable Systems", speaker: "Mr. Vinay Devasthali", details: "Saveeco Energy India, Pune", type: "session", label: "Industry Session", desc: "Commercial perspective on implementing sustainable energy systems and energy recovery schemes." },
-        { id: 4, time: "11.55 am – 01.30 pm", title: "Lunch Break", type: "break", label: "Break", desc: "Networking lunch." },
-        { id: 5, time: "01.30 – 02.20 pm", session: "Session 8", title: "Thermoeconomic & Exergoenvironmental Investigation on Power Generation and Cogeneration Systems", speaker: "Prof. N Shankar Ganesh", details: "GIET, Ranipet, Tamil Nadu", type: "session", label: "Expert Lecture", desc: "Study of thermodynamic efficiency combined with economic analysis and environmental footprint calculations." },
-        { id: 6, time: "02.30 – 03.15 pm", session: "Session 9", title: "Technological Pathways for Waste Heat Recovery: From Fundamentals to Application", speaker: "Prof. Christos N. Markides", details: "Imperial College London, UK", type: "session", label: "Expert Lecture", desc: "Systematic pathways for translating fundamental exergy science into real-world industrial waste heat recovery solutions." },
-        { id: 7, time: "03.15 – 03.30 pm", title: "Tea Break", type: "break", label: "Break", desc: "Brief afternoon recess." },
-        { id: 8, time: "03.30 – 04.15 pm", title: "Valedictory Session", type: "special", label: "Valedictory", desc: "Concluding remarks, certification distribution, and closing ceremony." }
+        {
+            id: 1,
+            time: '10.00 – 10.50 am',
+            session: 'Session 6',
+            title: 'Challenges and Technologies for the Decarbonisation of Industrial Energy Users',
+            speaker: 'Prof. Umberto Desideri',
+            details: 'University of Pisa, Italy',
+            type: 'session',
+            label: 'Expert Lecture',
+            desc: 'An in-depth look into technological options and challenges for industrial decarbonization.'
+        },
+        {
+            id: 2,
+            time: '10.50 – 11.05 am',
+            title: 'Tea Break',
+            type: 'break',
+            label: 'Break',
+            desc: 'Morning refreshments.'
+        },
+        {
+            id: 3,
+            time: '11.05 – 11.55 am',
+            session: 'Session 7',
+            title: 'Industry Lecture on Energy Recovery & Sustainable Systems',
+            speaker: 'Mr. Vinay Devasthali',
+            details: 'Saveeco Energy India, Pune',
+            type: 'session',
+            label: 'Industry Session',
+            desc: 'Commercial perspective on implementing sustainable energy systems and energy recovery schemes.'
+        },
+        {
+            id: 4,
+            time: '11.55 am – 01.30 pm',
+            title: 'Lunch Break',
+            type: 'break',
+            label: 'Break',
+            desc: 'Networking lunch.'
+        },
+        {
+            id: 5,
+            time: '01.30 – 02.20 pm',
+            session: 'Session 8',
+            title: 'Thermoeconomic & Exergoenvironmental Investigation on Power Generation and Cogeneration Systems',
+            speaker: 'Prof. N Shankar Ganesh',
+            details: 'GIET, Ranipet, Tamil Nadu',
+            type: 'session',
+            label: 'Expert Lecture',
+            desc: 'Study of thermodynamic efficiency combined with economic analysis and environmental footprint calculations.'
+        },
+        {
+            id: 6,
+            time: '02.30 – 03.15 pm',
+            session: 'Session 9',
+            title: 'Technological Pathways for Waste Heat Recovery: From Fundamentals to Application',
+            speaker: 'Prof. Christos N. Markides',
+            details: 'Imperial College London, UK',
+            type: 'session',
+            label: 'Expert Lecture',
+            desc: 'Systematic pathways for translating fundamental exergy science into real-world industrial waste heat recovery solutions.'
+        },
+        {
+            id: 7,
+            time: '03.15 – 03.30 pm',
+            title: 'Tea Break',
+            type: 'break',
+            label: 'Break',
+            desc: 'Brief afternoon recess.'
+        },
+        {
+            id: 8,
+            time: '03.30 – 04.15 pm',
+            title: 'Valedictory Session',
+            type: 'special',
+            label: 'Valedictory',
+            desc: 'Concluding remarks, certification distribution, and closing ceremony.'
+        }
     ]
 }
 
-export default function Program3D() {
+export default function Program3D({ enableEffects = true }) {
     const [activeDay, setActiveDay] = useState(1)
     const activeList = schedule[`day${activeDay}`]
     const canvasContainerRef = useRef(null)
 
     // Vanilla Three.js constellation network - 100% independent of React re-renders
     useEffect(() => {
+        if (!enableEffects) return
         if (!canvasContainerRef.current) return
 
         const container = canvasContainerRef.current
@@ -44,7 +191,10 @@ export default function Program3D() {
         const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100)
         camera.position.z = 8
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+        const renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true
+        })
         renderer.setSize(width, height)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         container.appendChild(renderer.domElement)
@@ -64,16 +214,23 @@ export default function Program3D() {
             canvas.width = size
             canvas.height = size
             const ctx = canvas.getContext('2d')
-            
-            const grad = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2)
+
+            const grad = ctx.createRadialGradient(
+                size / 2,
+                size / 2,
+                0,
+                size / 2,
+                size / 2,
+                size / 2
+            )
             grad.addColorStop(0, 'rgba(59, 130, 246, 1)')
             grad.addColorStop(0.2, 'rgba(59, 130, 246, 0.8)')
             grad.addColorStop(0.5, 'rgba(96, 165, 250, 0.2)')
             grad.addColorStop(1, 'rgba(255, 255, 255, 0)')
-            
+
             ctx.fillStyle = grad
             ctx.fillRect(0, 0, size, size)
-            
+
             return new THREE.CanvasTexture(canvas)
         }
         const particleTexture = createCircleTexture()
@@ -90,9 +247,9 @@ export default function Program3D() {
         // Generate points
         for (let i = 0; i < count; i++) {
             const theta = Math.random() * Math.PI * 2
-            const phi = Math.acos((Math.random() * 2) - 1)
+            const phi = Math.acos(Math.random() * 2 - 1)
             const r = radius * (0.5 + Math.random() * 0.7)
-            
+
             const x = r * Math.sin(phi) * Math.cos(theta)
             const y = r * Math.sin(phi) * Math.sin(theta)
             const z = (Math.random() - 0.5) * 3
@@ -107,8 +264,11 @@ export default function Program3D() {
 
         // Particle Geometry and Material
         const particleGeo = new THREE.BufferGeometry()
-        particleGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
-        
+        particleGeo.setAttribute(
+            'position',
+            new THREE.Float32BufferAttribute(positions, 3)
+        )
+
         const particleMat = new THREE.PointsMaterial({
             size: 0.28,
             map: particleTexture,
@@ -125,7 +285,7 @@ export default function Program3D() {
         const lineGeo = new THREE.BufferGeometry()
         const linePos = new Float32Array(maxConnections * 2 * 3)
         lineGeo.setAttribute('position', new THREE.BufferAttribute(linePos, 3))
-        
+
         const lineMat = new THREE.LineBasicMaterial({
             color: 0x93c5fd,
             transparent: true,
@@ -142,7 +302,6 @@ export default function Program3D() {
         const animate = () => {
             animationFrameId = requestAnimationFrame(animate)
 
-            const delta = clock.getDelta()
             const time = clock.getElapsedTime()
 
             // Update particle positions
@@ -157,7 +316,9 @@ export default function Program3D() {
                 arr[i3 + 2] += velocities[i3 + 2]
 
                 // Bounce particles back inside bounding sphere
-                const dist = Math.sqrt(arr[i3]**2 + arr[i3+1]**2 + arr[i3+2]**2)
+                const dist = Math.sqrt(
+                    arr[i3] ** 2 + arr[i3 + 1] ** 2 + arr[i3 + 2] ** 2
+                )
                 if (dist > radius * 1.2) {
                     velocities[i3] *= -1
                     velocities[i3 + 1] *= -1
@@ -174,7 +335,7 @@ export default function Program3D() {
                 for (let j = i + 1; j < count; j++) {
                     const i3 = i * 3
                     const j3 = j * 3
-                    
+
                     const dx = arr[i3] - arr[j3]
                     const dy = arr[i3 + 1] - arr[j3 + 1]
                     const dz = arr[i3 + 2] - arr[j3 + 2]
@@ -196,8 +357,12 @@ export default function Program3D() {
             // Clear remaining line coordinates to avoid drawing lines back to origin
             for (let i = lineIdx; i < maxConnections; i++) {
                 const lOffset = i * 6
-                lArr[lOffset] = 0; lArr[lOffset+1] = 0; lArr[lOffset+2] = 0;
-                lArr[lOffset+3] = 0; lArr[lOffset+4] = 0; lArr[lOffset+5] = 0;
+                lArr[lOffset] = 0
+                lArr[lOffset + 1] = 0
+                lArr[lOffset + 2] = 0
+                lArr[lOffset + 3] = 0
+                lArr[lOffset + 4] = 0
+                lArr[lOffset + 5] = 0
             }
             lines.geometry.attributes.position.needsUpdate = true
 
@@ -235,16 +400,19 @@ export default function Program3D() {
             lineMat.dispose()
             renderer.dispose()
         }
-    }, [])
+    }, [enableEffects])
 
     return (
         <section id="program" className="program-dashboard-section">
-            
             {/* Native Canvas Container - 100% decoupled from React render loops */}
-            <div className="section-3d-bg" ref={canvasContainerRef} />
+            {enableEffects && (
+                <div className="section-3d-bg" ref={canvasContainerRef} />
+            )}
 
-            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-                
+            <div
+                className="container"
+                style={{ position: 'relative', zIndex: 2 }}
+            >
                 {/* Header Block */}
                 <div className="section-header-block">
                     <h2 className="section-title-main">Programme Schedule</h2>
@@ -271,42 +439,65 @@ export default function Program3D() {
                 {/* Schedule Card Grid Layout */}
                 <div className="schedule-cards-grid">
                     {activeList.map((item) => (
-                        <div key={item.id} className={`schedule-grid-card ${item.type}`}>
+                        <div
+                            key={item.id}
+                            className={`schedule-grid-card ${item.type}`}
+                        >
                             <div className="card-top-header">
-                                <span className="card-badge-label">{item.label}</span>
+                                <span className="card-badge-label">
+                                    {item.label}
+                                </span>
                                 <div className="card-time-badge">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                    <svg
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2.5"
+                                    >
                                         <circle cx="12" cy="12" r="10" />
                                         <polyline points="12 6 12 12 16 14" />
                                     </svg>
                                     <span>{item.time}</span>
                                 </div>
                             </div>
-                            
+
                             <h3 className="card-title-main">
-                                {item.session && <span className="session-prefix">{item.session}: </span>}
+                                {item.session && (
+                                    <span className="session-prefix">
+                                        {item.session}:{' '}
+                                    </span>
+                                )}
                                 {item.title}
                             </h3>
-                            
+
                             {item.speaker && (
                                 <div className="card-speaker-block">
                                     <div className="speaker-avatar">
-                                        {item.speaker.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                                        {item.speaker
+                                            .split(' ')
+                                            .map((n) => n[0])
+                                            .join('')
+                                            .slice(0, 2)}
                                     </div>
                                     <div className="speaker-meta">
-                                        <div className="speaker-name">{item.speaker}</div>
-                                        <div className="speaker-sub">{item.details}</div>
+                                        <div className="speaker-name">
+                                            {item.speaker}
+                                        </div>
+                                        <div className="speaker-sub">
+                                            {item.details}
+                                        </div>
                                     </div>
                                 </div>
                             )}
-                            
+
                             <p className="card-description-text">{item.desc}</p>
-                            
+
                             <div className="card-accent-bar"></div>
                         </div>
                     ))}
                 </div>
-
             </div>
 
             <style>{`

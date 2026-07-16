@@ -16,13 +16,13 @@
 }
 
 .speakers-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 2rem !important;
-    max-width: 1100px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 /* Professional Enhanced Card with Living Border */
@@ -37,9 +37,9 @@
     position: relative;
     overflow: visible;
     /* Force 3 per row on desktop with wider cards */
-    flex: 0 0 340px !important;
-    width: 340px !important;
-    min-width: 340px !important;
+    flex: 1 1 320px;
+    max-width: 350px;
+    min-width: 280px;
     box-shadow:
         0 4px 6px -1px rgba(0, 0, 0, 0.05),
         0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -93,7 +93,6 @@
 
 /* Inner white background (handled by main element, but ensuring clean stacking) */
 
-
 .profile-card:hover::before {
     opacity: 1;
 }
@@ -106,7 +105,11 @@
     right: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+    background: radial-gradient(
+        circle,
+        rgba(59, 130, 246, 0.03) 0%,
+        transparent 70%
+    );
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
@@ -199,12 +202,11 @@
     box-shadow:
         0 0 0 2px #e2e8f0,
         0 4px 12px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%) !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
 }
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
-
     /* 2 columns on medium screens */
     .profile-card {
         width: calc(50% - 1.25rem);
@@ -212,7 +214,6 @@
 }
 
 @media (max-width: 768px) {
-
     /* 1 column on mobile */
     .profile-card {
         width: 100%;

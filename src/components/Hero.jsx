@@ -9,7 +9,7 @@ function Hero() {
             'SPARC Sponsored 2-Day Workshop',
             'Computational Tools & Process Design',
             'Thermal Polygeneration Systems',
-            'Sep 03-04, 2026 @ NIT Jalandhar'
+            'September 3-4, 2026 at NIT Jalandhar'
         ],
         50,
         30,
@@ -18,7 +18,6 @@ function Hero() {
 
     return (
         <section className="hero" id="home">
-
             <div className="container">
                 {/* Three Logos Row */}
                 <div className="hero-logos-row">
@@ -27,16 +26,16 @@ function Hero() {
                             src="/assets/images/sparc_coordinator_logo.svg"
                             alt="SPARC National Coordinator"
                             className="hero-logo"
+                            decoding="async"
                         />
-
                     </div>
                     <div className="logo-item">
                         <img
                             src="/assets/images/header_logos.png"
                             alt="NIT Jalandhar"
                             className="hero-logo"
+                            decoding="async"
                         />
-
                     </div>
 
                     <div className="logo-item">
@@ -44,8 +43,8 @@ function Hero() {
                             src="/assets/images/sparc_logo.png"
                             alt="SPARC"
                             className="hero-logo"
+                            decoding="async"
                         />
-
                     </div>
                 </div>
 
@@ -53,14 +52,19 @@ function Hero() {
                 <div className="hero-divider"></div>
 
                 {/* Workshop Title */}
-                <div className="hero-title-section" ref={titleParallax.ref} style={titleParallax.style}>
+                <div
+                    className="hero-title-section"
+                    ref={titleParallax.ref}
+                    style={titleParallax.style}
+                >
                     <div className="hero-tag typing-text">
                         {displayedText}
                         <span className="typing-cursor">|</span>
                     </div>
                     <h1 className="hero-main-title">
                         Advancing Heat Recovery Thermal Polygeneration:
-                        Computational Tools, Process Design, and Practical Training
+                        Computational Tools, Process Design, and Practical
+                        Training
                     </h1>
                 </div>
 
@@ -69,13 +73,17 @@ function Hero() {
                     <div className="detail-box">
                         <div className="detail-content">
                             <span className="detail-label">WHEN</span>
-                            <span className="detail-value">September 3-4, 2026</span>
+                            <span className="detail-value">
+                                September 3-4, 2026
+                            </span>
                         </div>
                     </div>
                     <div className="detail-box">
                         <div className="detail-content">
                             <span className="detail-label">WHERE</span>
-                            <span className="detail-value">NIT Jalandhar, Punjab</span>
+                            <span className="detail-value">
+                                NIT Jalandhar, Punjab
+                            </span>
                         </div>
                     </div>
                     <div className="detail-box">

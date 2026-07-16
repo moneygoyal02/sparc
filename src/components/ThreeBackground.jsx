@@ -40,21 +40,29 @@ function EnergyFlow() {
     useFrame((state) => {
         if (!particlesRef.current) return
 
-        const positions = particlesRef.current.geometry.attributes.position.array
+        const positions =
+            particlesRef.current.geometry.attributes.position.array
         const sizes = particlesRef.current.geometry.attributes.size.array
         const opacities = particlesRef.current.geometry.attributes.opacity.array
 
         // Calculate mouse position in world space at z=0
-        const mouseVector = new THREE.Vector3(mouseRef.current.x, mouseRef.current.y, 0)
+        const mouseVector = new THREE.Vector3(
+            mouseRef.current.x,
+            mouseRef.current.y,
+            0
+        )
         mouseVector.unproject(state.camera)
         const dir = mouseVector.sub(state.camera.position).normalize()
         const distanceToPlane = -state.camera.position.z / dir.z
-        const mouseWorldPos = state.camera.position.clone().add(dir.multiplyScalar(distanceToPlane))
+        const mouseWorldPos = state.camera.position
+            .clone()
+            .add(dir.multiplyScalar(distanceToPlane))
 
         particles.forEach((particle, i) => {
             // Standard Flow
             particle.y += particle.speed
-            particle.x += Math.sin(state.clock.elapsedTime * 0.5 + particle.phase) * 0.01
+            particle.x +=
+                Math.sin(state.clock.elapsedTime * 0.5 + particle.phase) * 0.01
 
             // Mouse Interaction (Scatter)
             const dx = particle.x - mouseWorldPos.x
@@ -179,7 +187,7 @@ function ThermalWaves() {
 
         for (let w = 0; w < waveCount; w++) {
             const yOffset = -4 + w * 3
-            const phase = w * Math.PI / 3
+            const phase = (w * Math.PI) / 3
 
             for (let i = 0; i <= 50; i++) {
                 const x = (i / 50) * 25 - 12.5
@@ -192,7 +200,13 @@ function ThermalWaves() {
 
         const points = []
         for (let i = 0; i < positions.length; i += 3) {
-            points.push(new THREE.Vector3(positions[i], positions[i + 1], positions[i + 2]))
+            points.push(
+                new THREE.Vector3(
+                    positions[i],
+                    positions[i + 1],
+                    positions[i + 2]
+                )
+            )
         }
 
         linesRef.current.geometry.setFromPoints(points)
@@ -225,15 +239,17 @@ function Scene() {
 // Main Component
 export default function ThreeBackground() {
     return (
-        <div style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            zIndex: -1,
-            pointerEvents: 'none'
-        }}>
+        <div
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: -1,
+                pointerEvents: 'none'
+            }}
+        >
             <Canvas
                 camera={{ position: [0, 0, 10], fov: 50 }}
                 style={{ background: 'transparent' }}

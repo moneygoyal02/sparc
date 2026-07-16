@@ -1,8 +1,18 @@
-import { useState, useEffect, useRef } from 'react'
-import { useMagnetic } from '../hooks/useMagnetic'
+import { useState, useEffect } from 'react'
+
+const navItems = [
+    { label: 'Home', sectionId: 'home' },
+    { label: 'About', sectionId: 'about' },
+    { label: 'Organizers', sectionId: 'organizers' },
+    { label: 'Speakers', sectionId: 'speakers' },
+    { label: 'Programme', sectionId: 'program' },
+    { label: 'Details', sectionId: 'details' },
+    { label: 'Registration', sectionId: 'registration', isButton: true }
+]
 
 function Header() {
     const [scrolled, setScrolled] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -11,6 +21,17 @@ function Header() {
 
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                setMenuOpen(false)
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown)
+        return () => window.removeEventListener('keydown', handleKeyDown)
     }, [])
 
     const scrollToSection = (e, sectionId) => {
@@ -25,17 +46,16 @@ function Header() {
                 top: offsetPosition,
                 behavior: 'smooth'
             })
+            setMenuOpen(false)
         }
     }
 
-    const registrationRef = useRef(null)
-    useMagnetic(registrationRef, 0.3)
-
     return (
-        <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <header
+            className={`header ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}
+        >
             <div className="container">
                 <nav className="navbar-content">
-                    {/* Logo Section */}
                     <div className="navbar-brand">
                         <img
                             src="/assets/images/header_logos.png"
@@ -48,49 +68,39 @@ function Header() {
                         </div>
                     </div>
 
-                    {/* Navigation Links */}
-                    <ul className="nav-links">
-                        <li>
-                            <a href="#home" onClick={(e) => scrollToSection(e, 'home')}>
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#organizers" onClick={(e) => scrollToSection(e, 'organizers')}>
-                                Organizers
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#speakers" onClick={(e) => scrollToSection(e, 'speakers')}>
-                                Speakers
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#program" onClick={(e) => scrollToSection(e, 'program')}>
-                                Program
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#details" onClick={(e) => scrollToSection(e, 'details')}>
-                                Details
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#registration"
-                                onClick={(e) => scrollToSection(e, 'registration')}
-                                className="btn-nav"
-                                ref={registrationRef}
-                                style={{ display: 'inline-block' }} /* Important for transform */
-                            >
-                                Registration
-                            </a>
-                        </li>
+                    <button
+                        type="button"
+                        className="mobile-menu-toggle"
+                        aria-label={
+                            menuOpen
+                                ? 'Close navigation menu'
+                                : 'Open navigation menu'
+                        }
+                        aria-expanded={menuOpen}
+                        aria-controls="primary-navigation"
+                        onClick={() => setMenuOpen((open) => !open)}
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <ul className="nav-links" id="primary-navigation">
+                        {navItems.map((item) => (
+                            <li key={item.sectionId}>
+                                <a
+                                    href={`#${item.sectionId}`}
+                                    onClick={(e) =>
+                                        scrollToSection(e, item.sectionId)
+                                    }
+                                    className={
+                                        item.isButton ? 'btn-nav' : undefined
+                                    }
+                                >
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>
