@@ -481,9 +481,8 @@ img {
     font-size: 1.1rem;
 }
 
-/* Organizers / Speakers Section */
-.organizers-section,
-.speakers-section {
+/* Organizers Section */
+.organizers-section {
     background-color: rgba(248, 250, 252, 0.85);
     backdrop-filter: blur(8px);
 }
@@ -563,61 +562,6 @@ img {
     font-weight: 500;
     color: var(--text-primary);
     font-size: 0.95rem;
-}
-
-.speakers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
-}
-
-.profile-card {
-    text-align: center;
-    transition: transform 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    padding: 2rem 1.5rem;
-    border-radius: 12px;
-    box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border: 1px solid var(--border-light, rgba(226, 232, 240, 0.8));
-}
-
-.profile-card:hover {
-    transform: translateY(-5px);
-}
-
-.profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 0 auto 1rem;
-    object-fit: cover;
-    border: 4px solid var(--primary-blue-light);
-    box-shadow: var(--shadow-md);
-}
-
-.profile-card h3 {
-    font-size: 1.1rem;
-    color: var(--primary-blue-dark);
-    margin-bottom: 0.25rem;
-}
-
-.profile-card .designation {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-}
-
-.profile-card .affiliation {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-style: italic;
 }
 
 /* Details Section */
@@ -934,15 +878,9 @@ img {
         grid-template-columns: 1fr;
     }
 
-    .organizers-grid,
-    .speakers-grid {
+    .organizers-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 2rem;
-    }
-
-    .profile-photo {
-        width: 120px;
-        height: 120px;
     }
 
     .details-grid {
@@ -974,11 +912,6 @@ img {
 
     .hero {
         padding: 6rem 1rem 2rem;
-    }
-
-    .profile-photo {
-        width: 100px;
-        height: 100px;
     }
 }
 
@@ -1159,45 +1092,6 @@ img {
     .program-tabs {
         flex-direction: column;
         gap: 0.75rem;
-    }
-}
-
-/* Final section overrides kept after legacy shared rules. */
-.speakers-section .speakers-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0;
-}
-
-.speakers-section .profile-card {
-    flex: 1 1 320px;
-    width: auto;
-    min-width: 280px;
-    max-width: 350px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-}
-
-.speakers-section .speaker-info {
-    text-align: left;
-}
-
-@media (max-width: 480px) {
-    .speakers-section .profile-card {
-        min-width: 0;
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .speakers-section .speaker-info {
-        text-align: center;
     }
 }
 
