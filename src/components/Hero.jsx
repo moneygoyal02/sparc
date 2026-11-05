@@ -19,20 +19,12 @@ function Hero() {
     return (
         <section className="hero" id="home">
             <div className="container">
-                {/* Three Logos Row */}
+                {/* Sponsor & Scheme Logos */}
                 <div className="hero-logos-row">
                     <div className="logo-item">
                         <img
                             src="/assets/images/sparc_coordinator_logo.svg"
                             alt="SPARC National Coordinator"
-                            className="hero-logo"
-                            decoding="async"
-                        />
-                    </div>
-                    <div className="logo-item">
-                        <img
-                            src="/assets/images/header_logos.png"
-                            alt="NIT Jalandhar"
                             className="hero-logo"
                             decoding="async"
                         />
