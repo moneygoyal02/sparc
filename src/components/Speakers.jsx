@@ -143,7 +143,7 @@ const speakers = [
 
                 {/* ── Divider ── */}
                 <div className="speakers-section-divider">
-                    <span>Workshop Faculty</span>
+                    <span>National Experts</span>
                 </div>
 
                 {/* ── Regular Speaker Grid ── */}
