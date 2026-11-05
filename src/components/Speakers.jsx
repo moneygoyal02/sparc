@@ -64,18 +64,18 @@ const speakers = [
         image: '/assets/images/speaker_rahul.jpg'   // 📌 Add photo: speaker_rahul.jpg
     },
     {
-        name: 'Prof. T. Srinivas',
-        type: 'Workshop Co-Coordinator',
-        designation: 'Professor, Department of Mechanical Engineering',
-        affiliation: 'NIT Jalandhar, Punjab',
-        image: '/assets/images/organizer_1.jpg'
-    },
-    {
         name: 'Dr. Rajan Kumar',
         type: 'Workshop Coordinator',
         designation: 'Assistant Professor, Department of Mechanical Engineering',
         affiliation: 'NIT Jalandhar, Punjab',
         image: '/assets/images/organizer_2.png'
+    },
+    {
+        name: 'Prof. T. Srinivas',
+        type: 'Workshop Co-Coordinator',
+        designation: 'Professor, Department of Mechanical Engineering',
+        affiliation: 'NIT Jalandhar, Punjab',
+        image: '/assets/images/organizer_1.jpg'
     }
 ];
 
