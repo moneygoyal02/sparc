@@ -1,15 +1,11 @@
 function Details() {
     const topics = [
-        'Sources, assessment, and characterization of industrial and process heat recovery opportunities',
-        'Energy, exergy, and exergo-economic analysis for integrated thermal systems',
-        'Computational methods and exergy-based optimization techniques for thermal polygeneration applications',
-        'Process design and integration of combined power, heating, cooling, and refrigeration systems',
-        'Advanced thermal cycles, system configurations, and selection of working fluids for heat recovery applications',
-        'Performance evaluation, efficiency enhancement, and sustainability assessment of thermal energy systems',
-        'Modeling, simulation, and design tools for heat recovery and thermal polygeneration processes',
-        'Case studies and industrial applications demonstrating practical implementation and operational insights',
-        'Emerging research trends, technological advancements, and future directions in next-generation thermal polygeneration systems',
-        'Hands-on Training Session on Computational Tools for Analysis, Design, and Optimization of Heat Recovery Thermal Polygeneration Systems'
+        'Fundamentals & Heat Generation – Cell architectures, Joule/reaction heat generation, and thermal runaway kinetics.',
+        'Multi-Physics Modelling – Coupled electrochemical-thermal simulations, 3D CFD thermal mapping, and FEA stress/swelling analysis.',
+        'Thermal Management Systems – Liquid cold plates, nano-enhanced phase change materials (PCMs), and hybrid cooling systems.',
+        'Packaging & Design Optimization – Cell layout, tab/busbar configuration, mechanical integrity, and multi-objective optimization.',
+        'Experimental Characterization & Validation – Real-time thermography, embedded strain/pressure sensing, abuse testing, and model calibration.',
+        'Smart Monitoring & Emerging Trends – BMS fault detection algorithms, AI-driven health monitoring, and next-generation battery materials.'
     ]
 
     return (
@@ -37,9 +33,10 @@ function Details() {
                             <h3>Target Audience</h3>
                         </div>
                         <p>
-                            Faculty members, researchers in
-                            Mechanical/Chemical/Energy Engineering, PhD
-                            scholars, PG students, and Industry professionals.
+                            Faculty members and researchers in Mechanical,
+                            Chemical, Thermal, Energy, and related fields,
+                            post-doctorates, Ph.D. scholars, postgraduate
+                            students, and industry professionals.
                         </p>
                     </div>
                     <div className="detail-card">
@@ -61,10 +58,14 @@ function Details() {
                         </div>
                         <p>
                             The Scheme for Promotion of Academic and Research
-                            Collaboration (SPARC) aims to improve the research
-                            ecosystem of India's Higher Educational Institutions
-                            by facilitating academic and research
-                            collaborations.
+                            Collaboration (SPARC) is a flagship initiative
+                            launched by the Ministry of Education (MoE),
+                            Government of India, with IIT Kharagpur functioning
+                            as the National Coordinating Institute. SPARC fosters
+                            high-impact bilateral research and academic
+                            partnerships by connecting top-tier Indian
+                            institutions with premier global universities ranked
+                            among the world&apos;s top 500.
                         </p>
                     </div>
                 </div>

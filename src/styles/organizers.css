@@ -47,10 +47,23 @@
 .patrons-grid {
     display: flex;
     justify-content: center;
+    align-items: stretch;
     gap: 2.5rem;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* Make the ScrollReveal wrapper div stretch to full row height */
+.patrons-grid > * {
+    display: flex;
+}
+
+/* Card fills the wrapper completely */
+.patrons-grid .organizer-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 /* Local Organizers (Main) */

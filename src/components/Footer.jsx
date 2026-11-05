@@ -22,23 +22,9 @@ function Footer() {
                     <div className="footer-col">
                         <h4>Principal Investigator</h4>
                         <p>
-                            <strong>Dr. Tangellapalli Srinivas</strong>
-                        </p>
-                        <p>Professor</p>
-                        <p>
-                            Email:{' '}
-                            <a href="mailto:srinivast@nitj.ac.in">
-                                srinivast@nitj.ac.in
-                            </a>
-                        </p>
-                        <p>Phone: +91-8056300923</p>
-                    </div>
-                    <div className="footer-col">
-                        <h4>Co-Principal Investigator</h4>
-                        <p>
                             <strong>Dr. Rajan Kumar</strong>
                         </p>
-                        <p>Assistant Professor</p>
+                        <p>Assistant Professor (Coordinator)</p>
                         <p>
                             Email:{' '}
                             <a href="mailto:kumarrajan@nitj.ac.in">
@@ -46,6 +32,20 @@ function Footer() {
                             </a>
                         </p>
                         <p>Phone: +91-8894990325</p>
+                    </div>
+                    <div className="footer-col">
+                        <h4>Co-Principal Investigator</h4>
+                        <p>
+                            <strong>Dr. Tangellapalli Srinivas</strong>
+                        </p>
+                        <p>Professor (Co-Coordinator)</p>
+                        <p>
+                            Email:{' '}
+                            <a href="mailto:srinivast@nitj.ac.in">
+                                srinivast@nitj.ac.in
+                            </a>
+                        </p>
+                        <p>Phone: +91-8056300923</p>
                     </div>
                 </div>
                 <div className="footer-bottom">

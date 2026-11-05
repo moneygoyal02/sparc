@@ -7,9 +7,9 @@ function Hero() {
     const { displayedText } = useTypingEffect(
         [
             'SPARC Sponsored 2-Day Workshop',
-            'Computational Tools & Process Design',
-            'Thermal Polygeneration Systems',
-            'September 3-4, 2026 at NIT Jalandhar'
+            'Advanced Battery Technologies',
+            'Modelling, Design & Thermal Management',
+            'December 18-19, 2026 at NIT Jalandhar'
         ],
         50,
         30,
@@ -62,9 +62,8 @@ function Hero() {
                         <span className="typing-cursor">|</span>
                     </div>
                     <h1 className="hero-main-title">
-                        Advancing Heat Recovery Thermal Polygeneration:
-                        Computational Tools, Process Design, and Practical
-                        Training
+                        Advanced Battery Technologies for Next-Generation Energy
+                        Storage: Modelling, Design, and Thermal Management
                     </h1>
                 </div>
 
@@ -74,7 +73,7 @@ function Hero() {
                         <div className="detail-content">
                             <span className="detail-label">WHEN</span>
                             <span className="detail-value">
-                                September 3-4, 2026
+                                December 18–19, 2026
                             </span>
                         </div>
                     </div>
@@ -89,13 +88,13 @@ function Hero() {
                     <div className="detail-box">
                         <div className="detail-content">
                             <span className="detail-label">PARTICIPANTS</span>
-                            <span className="detail-value">Limited Seats</span>
+                            <span className="detail-value">60 Seats (In-Person)</span>
                         </div>
                     </div>
                     <div className="detail-box">
                         <div className="detail-content">
-                            <span className="detail-label">REGISTRATION</span>
-                            <span className="detail-value">Free Entry</span>
+                            <span className="detail-label">DEADLINE</span>
+                            <span className="detail-value">December 12, 2026</span>
                         </div>
                     </div>
                 </div>

@@ -71,21 +71,37 @@ function Collaboration() {
                 <div className="collaboration-logos">
                     <div className="collab-logo-item">
                         <img
-                            src="/assets/images/imperial.png"
-                            alt="Imperial College London"
+                            src="/assets/images/asu_logo.png"
+                            alt="Arizona State University"
                             className="collab-logo"
                             loading="lazy"
                             decoding="async"
+                            onError={(e) => {
+                                e.target.style.display = 'none'
+                                e.target.nextSibling.style.display = 'flex'
+                            }}
                         />
+                        {/* 📌 Placeholder: Add asu_logo.png to /public/assets/images/ */}
+                        <div className="collab-logo-placeholder" style={{ display: 'none', padding: '1rem', fontWeight: 700, fontSize: '1.1rem', color: '#8C1D40' }}>
+                            Arizona State University, USA
+                        </div>
                     </div>
                     <div className="collab-logo-item">
                         <img
-                            src="/assets/images/pisa.png"
-                            alt="University of Pisa"
+                            src="/assets/images/temple_logo.png"
+                            alt="Temple University"
                             className="collab-logo"
                             loading="lazy"
                             decoding="async"
+                            onError={(e) => {
+                                e.target.style.display = 'none'
+                                e.target.nextSibling.style.display = 'flex'
+                            }}
                         />
+                        {/* 📌 Placeholder: Add temple_logo.png to /public/assets/images/ */}
+                        <div className="collab-logo-placeholder" style={{ display: 'none', padding: '1rem', fontWeight: 700, fontSize: '1.1rem', color: '#9D2235' }}>
+                            Temple University, USA
+                        </div>
                     </div>
                 </div>
             </div>

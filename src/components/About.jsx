@@ -27,43 +27,36 @@ function About() {
                     {/* Right Content */}
                     <div className="about-content">
                         <h3 className="section-title-left">
-                            ABOUT THE PROGRAMME
+                            ABOUT THE WORKSHOP
                         </h3>
                         <p className="about-description">
-                            This SPARC Sponsored 2-Day Workshop on
-                            &ldquo;Advancing Heat Recovery Thermal
-                            Polygeneration: Computational Tools, Process Design,
-                            and Practical Training&rdquo; is being conducted
-                            under the SPARC project entitled &ldquo;Exergy
-                            Optimization Framework for Waste Heat Recovery in
-                            Next-Generation Polygeneration Systems.&rdquo; The
-                            workshop aims to create a multidisciplinary platform
-                            for researchers, academicians, industry
-                            professionals, and students to explore recent
-                            developments in heat recovery and thermal
-                            polygeneration technologies.
+                            The workshop on &ldquo;Advanced Battery Technologies
+                            for Next-Generation Energy Storage: Modelling,
+                            Design, and Thermal Management&rdquo; is an academic
+                            dissemination initiative supported by the Scheme for
+                            Promotion of Academic and Research Collaboration
+                            (SPARC), Ministry of Education, Government of India.
                         </p>
                         <p className="about-description">
-                            With growing emphasis on energy efficiency and
-                            sustainable systems, the event will highlight
-                            innovative approaches for integrating multiple
-                            energy outputs from a single thermal source. The key
-                            objectives include introducing participants to
-                            advanced computational tools for thermal system
-                            analysis, strengthening understanding of process
-                            design methodologies, and providing practical
-                            training through hands-on sessions and case studies.
-                            Discussions will focus on improving energy
-                            utilization, reducing environmental impact, and
-                            enhancing the performance of industrial and
-                            renewable energy systems.
+                            It is organized as part of the collaborative
+                            bilateral SPARC project entitled &ldquo;Thermo-Mechanical
+                            Analysis and Experimental Validation of Lithium-Ion
+                            Battery Modules for Enhanced Safety and
+                            Performance&rdquo; between Dr B. R. Ambedkar
+                            National Institute of Technology (NIT) Jalandhar,
+                            Arizona State University (ASU), and Temple
+                            University.
                         </p>
                         <p className="about-description">
-                            By bringing together international expertise and
-                            collaborative research perspectives, the workshop
-                            seeks to promote knowledge exchange, skill
-                            development, and future academic and research
-                            partnerships.
+                            The workshop provides an intensive forum covering the
+                            thermo-mechanical reliability and performance
+                            optimization of lithium-ion batteries (LIBs). It
+                            bridges fundamental multi-physics theory with
+                            practical engineering design, bringing together
+                            researchers, doctoral scholars, and industry
+                            professionals to explore cutting-edge simulation,
+                            packaging architectures, and experimental
+                            methodologies.
                         </p>
                     </div>
                 </div>

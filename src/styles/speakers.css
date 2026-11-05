@@ -223,3 +223,13 @@
         text-align: center;
     }
 }
+
+/* Speaker bio paragraph */
+.speaker-bio {
+    font-size: 0.84rem;
+    line-height: 1.65;
+    color: #475569;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(203, 213, 225, 0.6);
+}

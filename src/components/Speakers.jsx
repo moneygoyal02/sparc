@@ -6,94 +6,75 @@ function Speakers() {
 
 const speakers = [
     {
-        name: 'Prof. Christos N. Markides',
+        name: 'Dr. Elham Sahraei',
         type: 'International Expert',
-        designation: 'Professor',
-        affiliation: 'Imperial College London, UK',
-        image: '/assets/images/speaker_1.png'
+        designation: 'Associate Professor of Mechanical Engineering & Director, Center for Battery Safety (CBS) / Electric Vehicle Safety Lab (EVSL)',
+        affiliation: 'Temple University, USA',
+        image: '/assets/images/speaker_elham.jpg',   // 📌 Add photo: speaker_elham.jpg
+        bio: 'An internationally recognized authority on lithium-ion battery crashworthiness, mechanical integrity, and abuse mechanics. Pioneer of the Sahraei Failure Criterion — widely adopted by automotive OEMs. Recipient of the 2024 ASME Edward F. Obert Award. Research secured over $3 million in grants from the Office of Naval Research, automotive industry, and federal transportation agencies.'
     },
     {
-        name: 'Prof. Umberto Desideri',
+        name: 'Prof. Arunachala Mada Kannan',
         type: 'International Expert',
+        designation: 'Professor & Graduate Program Chair (Clean Energy Systems), Ira A. Fulton Schools of Engineering',
+        affiliation: 'Arizona State University (ASU), USA',
+        image: '/assets/images/speaker_kannan.jpg',  // 📌 Add photo: speaker_kannan.jpg
+        bio: 'Over three decades of distinguished leadership in energy conversion and storage technologies. Ph.D. from the Indian Institute of Science (IISc), Bangalore. Author of 150+ high-impact peer-reviewed publications with 8 U.S. patents. Managed sponsored research funding exceeding $9 million from DOE, DOD, and Salt River Project. Associate Editor of the International Journal of Hydrogen Energy.'
+    },
+    {
+        name: 'Prof. T. J. Dhilip Kumar',
+        type: 'Academic Speaker',
         designation: 'Professor',
-        affiliation: 'University of Pisa, Italy',
-        image: '/assets/images/speaker_2.png'
+        affiliation: 'Indian Institute of Technology Ropar',
+        image: '/assets/images/speaker_dhilip.jpg'  // 📌 Add photo: speaker_dhilip.jpg
     },
     {
-        name: 'Prof. Anil Kumar Emadabathuni',
+        name: 'Dr. Rabinder Singh Bharj',
         type: 'Academic Speaker',
-        designation: 'Professor, Department of Mechanical Engineering',
-        affiliation: 'IIT Tirupati',
-        image: '/assets/images/speaker_anil.jpg'
+        designation: 'Associate Professor, Department of Mechanical Engineering',
+        affiliation: 'National Institute of Technology Jalandhar',
+        image: '/assets/images/speaker_bharj.jpg'   // 📌 Add photo: speaker_bharj.jpg
     },
     {
-        name: 'Dr. Jagabandhu Kole',
-        type: 'Industry Speaker',
-        designation: 'Sr Vice President R & D',
-        affiliation: 'JSW Cements, Mumbai',
-        image: '/assets/images/speaker_jagabandhu.jpg'
-    },
-    {
-        name: 'Prof. AVSSKS Gupta',
+        name: 'Dr. Saurabh Saxena',
         type: 'Academic Speaker',
-        designation: 'Professor, Department of Mechanical Engineering',
-        affiliation: 'JNTU, Hyderabad',
-        image: '/assets/images/speaker_gupta.jpeg'
+        designation: 'Assistant Professor',
+        affiliation: 'Indian Institute of Technology Delhi',
+        image: '/assets/images/speaker_saxena.jpg'  // 📌 Add photo: speaker_saxena.jpg
     },
     {
-        name: 'Mr. Abhijeet Chaudhari',
-        type: 'Industry Speaker',
-        designation: 'Director',
-        affiliation: 'Enrecover Pvt. Limited, Pune',
-        image: '/assets/images/speaker_9.jpeg'
-    },
-    {
-        name: 'Prof. S Suresh',
+        name: 'Dr. Manish Kumar Rathod',
         type: 'Academic Speaker',
-        designation: 'Professor, Department of Mechanical Engineering',
-        affiliation: 'NIT Tiruchirappalli',
-        image: '/assets/images/speaker_suresh.jpg'
+        designation: 'Professor',
+        affiliation: 'National Institute of Technology, Surat',
+        image: '/assets/images/speaker_rathod.jpg'  // 📌 Add photo: speaker_rathod.jpg
     },
     {
-        name: 'Dr. Abhishek Agarwal',
+        name: 'Mr. Suraj S D',
         type: 'Industry Speaker',
-        designation: 'Managing Director',
-        affiliation: 'Siemens Energy India Limited, New Delhi',
-        image: '/assets/images/speaker_abhishek.jpg'
+        designation: 'Founder & CEO',
+        affiliation: 'Decibels Lab Pvt Ltd, India',
+        image: '/assets/images/speaker_suraj.jpg'   // 📌 Add photo: speaker_suraj.jpg
     },
     {
-        name: 'Prof. Eswaramoorthy Muthusamy',
-        type: 'Academic Speaker',
-        designation: 'Professor, School of Mechanical Engineering',
-        affiliation: 'Shri Mata Vaishno Devi University, Katra',
-        image: '/assets/images/speaker_eswaramoorthy.jpg'
-    },
-    {
-        name: 'Mr. Arijit Ghosh',
+        name: 'Mr. Rahul Goyal',
         type: 'Industry Speaker',
-        designation: 'Managing Director',
-        affiliation: 'S.A.P. Automations India Pvt. Ltd., New Delhi',
-        image: '/assets/images/speaker_arijit.jpeg'
+        designation: 'Founder & CEO',
+        affiliation: 'Republic Motors, Jalandhar, India',
+        image: '/assets/images/speaker_rahul.jpg'   // 📌 Add photo: speaker_rahul.jpg
     },
     {
-        name: 'Dr. Ankit Gupta',
-        type: 'Research Speaker',
-        designation: 'Scientist-E',
-        affiliation: 'CSIR–National Environmental Engineering Research Institute (NEERI), New Delhi',
-        image: '/assets/images/speaker_ankit.jpg'
-    },
-    {
-        name: 'Prof. T Srinivas',
-        type: 'Workshop Coordinator',
+        name: 'Prof. T. Srinivas',
+        type: 'Workshop Co-Coordinator',
         designation: 'Professor, Department of Mechanical Engineering',
-        affiliation: 'NIT Jalandhar',
-        image: '/assets/images/speaker_6.jpg'
+        affiliation: 'NIT Jalandhar, Punjab',
+        image: '/assets/images/organizer_1.jpg'
     },
     {
         name: 'Dr. Rajan Kumar',
-        type: 'Workshop Co-Coordinator',
+        type: 'Workshop Coordinator',
         designation: 'Assistant Professor, Department of Mechanical Engineering',
-        affiliation: 'NIT Jalandhar',
+        affiliation: 'NIT Jalandhar, Punjab',
         image: '/assets/images/organizer_2.png'
     }
 ];
@@ -106,14 +87,14 @@ const speakers = [
                     ref={titleParallax.ref}
                     style={titleParallax.style}
                 >
-                    <span className="section-eyebrow">Invited Faculty</span>
+                    <span className="section-eyebrow">International Faculty</span>
                     <h2 className="section-title">
-                        Distinguished Workshop Speakers
+                        Distinguished International Experts
                     </h2>
                     <p className="speakers-intro">
-                        Academic and industry experts contributing sessions on
-                        heat recovery, exergy analysis, process design, and
-                        thermal polygeneration systems.
+                        World-renowned experts in lithium-ion battery safety,
+                        thermo-mechanical modelling, electrochemical systems,
+                        and next-generation energy storage technologies.
                     </p>
                 </div>
                 <div className="speakers-grid">
@@ -157,6 +138,11 @@ const speakers = [
                                     <p className="affiliation">
                                         {speaker.affiliation}
                                     </p>
+                                    {speaker.bio && (
+                                        <p className="speaker-bio">
+                                            {speaker.bio}
+                                        </p>
+                                    )}
                                 </div>
                             </article>
                         </ScrollReveal>

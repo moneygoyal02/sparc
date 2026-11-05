@@ -64,7 +64,7 @@ function Header() {
                         />
                         <div className="brand-text">
                             <h1 className="brand-title">SPARC Workshop</h1>
-                            <p className="brand-subtitle">2026</p>
+                            <p className="brand-subtitle">Dec 18–19, 2026</p>
                         </div>
                     </div>
 
