@@ -77,15 +77,12 @@
 }
 
 .collab-logo {
-    height: 160px;
-    /* Standardized height */
+    max-height: 100px;
+    max-width: 220px;
     width: auto;
+    height: auto;
     object-fit: contain;
     transition: all 0.3s ease;
-    /* Optional: Grayscale until hover? 
-       filter: grayscale(100%);
-       opacity: 0.8; 
-    */
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
 }
 
@@ -104,7 +101,8 @@
     }
 
     .collab-logo {
-        height: 100px;
+        max-height: 70px;
+        max-width: 160px;
     }
 
     .collaboration-title {
