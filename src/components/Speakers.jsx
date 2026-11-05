@@ -45,7 +45,7 @@ const speakers = [
     {
         name: 'Dr. Manish Kumar Rathod',
         type: 'Academic Speaker',
-        designation: 'Professor',
+        designation: 'Associate Professor',
         affiliation: 'National Institute of Technology, Surat',
         image: '/assets/images/speaker_rathod.jpg'  // 📌 Add photo: speaker_rathod.jpg
     },
