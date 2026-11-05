@@ -33,7 +33,7 @@ function Registration() {
                         <strong>December 12, 2026</strong>
                     </p>
                     <a
-                        href="https://forms.gle/Q35rLFrBR4szTa2m9"
+                        href="https://v1.nitj.ac.in/events_registration/workshop_abtnges2026/login"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary"
