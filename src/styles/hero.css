@@ -35,8 +35,19 @@
     animation-delay: 0s;
 }
 
+/* Centre logo — NIT Jalandhar (organiser) — slightly larger & lower */
 .logo-item:nth-child(2) {
     animation-delay: 2s;
+    transform: translateY(14px) scale(1.18);
+    transform-origin: center top;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-item:nth-child(2) .hero-logo {
+    filter:
+        drop-shadow(0 6px 16px rgba(30, 64, 175, 0.18))
+        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
 }
 
 .logo-item:nth-child(3) {
