@@ -27,8 +27,8 @@ function Footer() {
                         <p>Assistant Professor (Coordinator)</p>
                         <p>
                             Email:{' '}
-                            <a href="mailto:kumarrajan@nitj.ac.in">
-                                kumarrajan@nitj.ac.in
+                            <a href="mailto:rajank@nitj.ac.in">
+                                rajank@nitj.ac.in
                             </a>
                         </p>
                         <p>Phone: +91-8894990325</p>
