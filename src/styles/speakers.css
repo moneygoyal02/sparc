@@ -233,3 +233,203 @@
     padding-top: 0.75rem;
     border-top: 1px solid rgba(203, 213, 225, 0.6);
 }
+
+/* ═══════════════════════════════════════════════
+   FEATURED EXPERT CARDS (International speakers)
+═══════════════════════════════════════════════ */
+.featured-speakers-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.featured-speaker-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.04),
+        0 10px 40px -10px rgba(30, 64, 175, 0.12);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.featured-speaker-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, #2563eb 0%, #7c3aed 100%);
+    border-radius: 24px 0 0 24px;
+}
+
+.featured-speaker-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 20px 40px -15px rgba(30, 64, 175, 0.2),
+        0 4px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+/* Featured photo */
+.featured-photo-wrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.featured-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 5px solid #ffffff;
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.25),
+        0 12px 30px rgba(0, 0, 0, 0.14);
+    display: block;
+}
+
+.featured-photo-fallback {
+    display: none;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Featured info */
+.featured-speaker-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.featured-expert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+}
+
+.featured-expert-badge::before {
+    content: '★';
+    font-size: 0.65rem;
+}
+
+.featured-name {
+    font-family: var(--font-heading, 'Playfair Display', serif);
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #1e3a8a;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.featured-designation {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.5;
+    margin-top: 0.1rem;
+}
+
+.featured-affiliation {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-top: 0.2rem;
+}
+
+.featured-bio {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: #374151;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION DIVIDER between featured & regular
+═══════════════════════════════════════════════ */
+.speakers-section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 2.5rem;
+}
+
+.speakers-section-divider::before,
+.speakers-section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e1 50%, transparent);
+}
+
+.speakers-section-divider span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    white-space: nowrap;
+    padding: 0.4rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    background: #f8fafc;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .featured-speaker-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .featured-photo-wrap {
+        margin: 0 auto;
+    }
+
+    .featured-expert-badge {
+        margin: 0 auto 0.5rem;
+    }
+
+    .featured-name {
+        font-size: 1.35rem;
+    }
+
+    .featured-speaker-card::before {
+        width: 100%;
+        height: 6px;
+        border-radius: 24px 24px 0 0;
+    }
+}

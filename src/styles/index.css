@@ -1115,3 +1115,95 @@ img {
         display: none !important;
     }
 }
+
+/* ═══════════════════════════════════════════════
+   WORKSHOP TOPIC ICON CARDS (Details section)
+═══════════════════════════════════════════════ */
+.topics-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.topic-icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--topic-bg, #f8fafc);
+    border: 1px solid color-mix(in srgb, var(--topic-color, #2563eb) 20%, transparent);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.topic-icon-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--topic-color, #2563eb);
+    border-radius: 0 0 16px 16px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.topic-icon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px -10px color-mix(in srgb, var(--topic-color, #2563eb) 30%, transparent);
+}
+
+.topic-icon-card:hover::after {
+    transform: scaleX(1);
+}
+
+.topic-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.topic-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--topic-color, #2563eb);
+}
+
+.topic-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.topic-card-desc {
+    font-size: 0.84rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .topics-icon-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 540px) {
+    .topics-icon-grid {
+        grid-template-columns: 1fr;
+    }
+}

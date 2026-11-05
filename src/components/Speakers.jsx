@@ -79,9 +79,13 @@ const speakers = [
     }
 ];
 
+    const featuredSpeakers = speakers.filter((s) => s.bio)
+    const regularSpeakers = speakers.filter((s) => !s.bio)
+
     return (
         <section className="section speakers-section" id="speakers">
             <div className="container">
+                {/* Section Header */}
                 <div
                     className="speakers-header"
                     ref={titleParallax.ref}
@@ -97,11 +101,57 @@ const speakers = [
                         and next-generation energy storage technologies.
                     </p>
                 </div>
-                <div className="speakers-grid">
-                    {speakers.map((speaker, index) => (
+
+                {/* ── Featured Expert Cards ── */}
+                <div className="featured-speakers-grid">
+                    {featuredSpeakers.map((speaker, index) => (
                         <ScrollReveal
                             key={index}
-                            delay={index * 0.1}
+                            delay={index * 0.15}
+                            style={{ width: '100%' }}
+                        >
+                            <article className="featured-speaker-card">
+                                <div className="featured-photo-wrap">
+                                    <img
+                                        src={speaker.image}
+                                        alt={speaker.name}
+                                        className="featured-photo"
+                                        loading="lazy"
+                                        decoding="async"
+                                        onError={(e) => {
+                                            e.target.style.display = 'none'
+                                            e.target.nextSibling.style.display = 'flex'
+                                        }}
+                                    />
+                                    <div className="featured-photo-fallback">
+                                        {speaker.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                                    </div>
+                                </div>
+                                <div className="featured-speaker-info">
+                                    <span className="featured-expert-badge">
+                                        {speaker.type}
+                                    </span>
+                                    <h3 className="featured-name">{speaker.name}</h3>
+                                    <p className="featured-designation">{speaker.designation}</p>
+                                    <p className="featured-affiliation">{speaker.affiliation}</p>
+                                    <p className="featured-bio">{speaker.bio}</p>
+                                </div>
+                            </article>
+                        </ScrollReveal>
+                    ))}
+                </div>
+
+                {/* ── Divider ── */}
+                <div className="speakers-section-divider">
+                    <span>Workshop Faculty</span>
+                </div>
+
+                {/* ── Regular Speaker Grid ── */}
+                <div className="speakers-grid">
+                    {regularSpeakers.map((speaker, index) => (
+                        <ScrollReveal
+                            key={index}
+                            delay={index * 0.08}
                             style={{ height: '100%' }}
                         >
                             <article className="profile-card">
@@ -114,35 +164,18 @@ const speakers = [
                                         decoding="async"
                                         onError={(e) => {
                                             e.target.style.display = 'none'
-                                            e.target.nextSibling.style.display =
-                                                'flex'
+                                            e.target.nextSibling.style.display = 'flex'
                                         }}
                                     />
                                     <div className="profile-photo-fallback">
-                                        {speaker.name
-                                            .split(' ')
-                                            .map((n) => n[0])
-                                            .join('')
-                                            .slice(0, 2)}
+                                        {speaker.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
                                     </div>
                                 </div>
-
                                 <div className="speaker-info">
-                                    <span className="speaker-type">
-                                        {speaker.type}
-                                    </span>
+                                    <span className="speaker-type">{speaker.type}</span>
                                     <h3>{speaker.name}</h3>
-                                    <p className="designation">
-                                        {speaker.designation}
-                                    </p>
-                                    <p className="affiliation">
-                                        {speaker.affiliation}
-                                    </p>
-                                    {speaker.bio && (
-                                        <p className="speaker-bio">
-                                            {speaker.bio}
-                                        </p>
-                                    )}
+                                    <p className="designation">{speaker.designation}</p>
+                                    <p className="affiliation">{speaker.affiliation}</p>
                                 </div>
                             </article>
                         </ScrollReveal>
