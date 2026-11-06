@@ -11,7 +11,7 @@ const speakers = [
         designation: 'Associate Professor of Mechanical Engineering & Director, Center for Battery Safety (CBS) / Electric Vehicle Safety Lab (EVSL)',
         affiliation: 'Temple University, USA',
         image: '/assets/images/speaker_elham.jpg',   // 📌 Add photo: speaker_elham.jpg
-        bio: 'An internationally recognized authority on lithium-ion battery crashworthiness, mechanical integrity, and abuse mechanics. Pioneer of the Sahraei Failure Criterion — widely adopted by automotive OEMs. Recipient of the 2024 ASME Edward F. Obert Award. Research secured over $3 million in grants from the Office of Naval Research, automotive industry, and federal transportation agencies.'
+        bio: 'An internationally recognized expert on lithium-ion battery crashworthiness, mechanical integrity, and abuse mechanics. Pioneer of the Sahraei Failure Criterion — widely adopted by automotive OEMs. Recipient of the 2024 ASME Edward F. Obert Award. Research secured over $3 million in grants from the Office of Naval Research, automotive industry, and federal transportation agencies.'
     },
     {
         name: 'Prof. Arunachala Mada Kannan',
